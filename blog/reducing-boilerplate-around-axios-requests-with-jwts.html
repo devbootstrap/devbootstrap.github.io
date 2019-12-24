@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn how to condense the boilerplate needed to make authenticated requests with Axios by wrapping the library with a custom module.">
+  <meta property="og:url" content="https://www.rallycoding.com/blog/reducing-boilerplate-around-axios-requests-with-jwts/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Reducing Boilerplate around Axios Requests with JWT&#39;s" />
+  <meta property="og:description" content="Learn how to condense the boilerplate needed to make authenticated requests with Axios by wrapping the library with a custom module." />
+  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
+  <meta property="og:image:width" content="1792" />
+  <meta property="og:image:height" content="963" />
+
+  <title>RallyCoding: Reducing Boilerplate around Axios Requests with JWT&#39;s</title>
+  <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
+  </head>
+</head>
+<body>
+  <section id="hero">
+    <div class="ui container">
+      <div id="header" class="ui borderless menu">
+        <div class="header item">
+          <h4 id="logo" onclick="document.location.href='/'">
+            RallyCoding
+          </h4>
+        </div>
+        <div id="nav" class="right menu">
+          <a class="item nav-courses " href="/courses">Courses</a>
+          <a class="item nav-blog " href="/blog">Blog</a>
+          <a class="item nav-videos " href="/videos">Videos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="post" class="ui container">
+    <h1>Reducing Boilerplate around Axios Requests with JWT's</h1>
+    <p>Laurynas asks the following:</p>
+    <blockquote>
+      <blockquote>
+        <p>Hello Stephen, thank you for the course, it helped greatly.</p>
+        <p>One think I can&#39;t seem to figure out is a neat way to reduce excess boilerplate in my project. Im using redux-thunk + axios just like you in your client code. Get JWT token, and I need to send it with each request to the server... Just like you do here: https://github.com/StephenGrider/AdvancedReduxCode/blob/master/auth/client/src/actions/index.js#L61</p>
+        <p>Since I have a ton of action creators where I have to add this, is there a good way to do this? I&#39;ve looked at writing my own middleware, or just a helper function to wrap boilerplate code, but none of the solutions I came up with &#39;felt right&#39;. I&#39;d appreciate your tips. </p>
+        <p>Thank you.</p>
+      </blockquote>
+    </blockquote>
+    <h4>Yep, I bet we can condense this down!</h4>
+    <p>The best approach here is to write a wrapper around the Axios module itself, so that we can inject the JWT or API Key whenever a request is made. Here&#39;s a good starting point:</p>
+
+    <pre>
+      <code class="language-jsx">import _ from &#39;lodash&#39;;
+            import axios from &#39;axios&#39;;
+
+            const api = {
+              get(url, options) {
+                return axios.get(url, _.merge(options, {
+                  headers: { authorization: localStorage.getItem(&#39;token&#39;) }
+                }));
+              },
+              post(url, data, options) {
+                return axios.post(url, data, _.merge(options, {
+                  headers: { authorization: localStorage.getItem(&#39;token&#39;) }
+                }));
+              }
+            };
+
+            export default api;
+      </code>
+    </pre>
+
+    <p>The <code>_.merge</code> stuff is in there to ensure that any additional options get passed in to the axios call. For example, if we wanted to add in some custom options to the &#39;axios.get&#39; call, we would want to make sure that those options didn&#39;t get accidentally clobbered by the authorization header.</p>
+
+    <p>Note that this approach assumes the token will be available through localStorage. In the not-unlikely-case that we want to more dynamically specify the token, we could use ES2015 classes to put together a better interface.</p>
+
+    <pre>
+      <code class="language-jsx">import _ from &#39;lodash&#39;;
+        import axios from &#39;axios&#39;;
+
+        class Api {
+          constructor(token) {
+            this.token = token;
+          }
+          get(url, options) {
+            return axios.get(url, _.merge(options, {
+              headers: { authorization: this.token }
+            }));
+          }
+
+          post(url, data, options) {
+            return axios.post(url, data, _.merge(options, {
+              headers: { authorization: this.token}
+            }));
+          }
+        }
+
+        export default Api;
+      </code>
+    </pre>
+
+    <p>With this, we could create a new instance of the API client once we knew what the JWT is.</p>
+    <p><code>const api = new Api(myJwt);</code></p>
+    <div id="post-controls">
+      <a href="/blog/how-to-fix-error-listen-eaddrinuse-and-error-listen-eacces.html" class="ui labeled left floated icon button">
+        <i class="left arrow icon"></i>
+        Previous Post
+      </a>
+      <a href="/blog/debugging-redux-with-es2015-proxies.html" class="ui right labeled right floated icon button">
+        <i class="right arrow icon"></i>
+        Next Post
+      </a>
+    </div>
+    <div class="vertical-space-80"></div>
+  </section>
+  <div id="disqus_thread" class="ui container"></div>
+  <script src="../assets/js/prism.44ed291397f3.js"></script>
+  <script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    var disqus_config = function() {
+      this.page.url = 'https://www.rallycoding.com/blog/reducing-boilerplate-around-axios-requests-with-jwts.html';
+      this.page.identifier = 'rallycoding-post-4';
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://rallycoding.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</body>
+
+</html>

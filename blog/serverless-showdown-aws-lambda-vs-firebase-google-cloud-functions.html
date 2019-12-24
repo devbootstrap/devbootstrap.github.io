@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="If 2016 was the year of microservices, 2017 is shaping up to be the year of serverless computing, most notably through AWS Lambda and Google Cloud Functions created through Firebase.">
+    <meta property="og:url" content="https://www.rallycoding.com/blog/serverless-showdown-aws-lambda-vs-firebase-google-cloud-functions/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Serverless Showdown: AWS Lambda vs Firebase Google Cloud Functions" />
+    <meta property="og:description" content="If 2016 was the year of microservices, 2017 is shaping up to be the year of serverless computing, most notably through AWS Lambda and Google Cloud Functions created through Firebase." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
+    <meta property="og:image:width" content="1792" />
+    <meta property="og:image:height" content="963" />
+
+
+
+    <title>RallyCoding: Serverless Showdown: AWS Lambda vs Firebase Google Cloud Functions</title>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
+</head>
+
+<body>
+  <section id="hero">
+    <div class="ui container">
+      <div id="header" class="ui borderless menu">
+        <div class="header item">
+          <h4 id="logo" onclick="document.location.href='/'">
+            RallyCoding
+          </h4>
+        </div>
+        <div id="nav" class="right menu">
+          <a class="item nav-courses " href="/courses">Courses</a>
+          <a class="item nav-blog " href="/blog">Blog</a>
+          <a class="item nav-videos " href="/videos">Videos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="post" class="ui container">
+    <h2 id="serverlessshowdownawslambdavsfirebasegooglecloudfunctions-1">Serverless Showdown: AWS Lambda vs Firebase Google Cloud Functions</h2>
+    <p>If 2016 was the year of microservices, 2017 is shaping up to be the year of serverless computing, most notably through AWS Lambda and Google Cloud Functions <em>created through Firebase</em>.</p>
+
+    <p>Cloud Functions for Firebase were announced a month ago, bringing them into direct competition with AWS’s offerings. This, of course, inevitably invites benchmarks and comparisons between AWS’s and Google’s offerings. Let’s walk through the two.</p>
+
+    <p><strong>Wait, what is serverless computing?</strong></p>
+
+    <p>Ah, the requisite explanation.</p>
+
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%201-min.png" alt="" />**</p>
+
+    <p>Traditional backends have been created using <strong>monolithic servers</strong>, where a single server may have several different responsibilities under a single codebase. Request comes in, server executes some processing, response comes out. The same server might be responsible for authentication, handling file uploads, and keeping track of user profiles. The key mechanic is that if two different requests come in for two different resources, it gets handled by a single codebase. This server might run on dedicated or virtualized machinery (or several machines!), and persistently runs over the span of days, weeks, or months.</p>
+
+    <p>More recently, we’ve seen the introduction of <strong>microservices</strong> as a popular architectural decision. With a microservices approach, there are still distinct servers, but many different servers, which of which handles a single purpose. A single service might be in charge of user authentication, and another one may handle file uploads. Microservice architectures are characterized by many separate codebases and incremental deployments of each individual service. The idea here is that a service which isn’t modified often is less likely to break, along with providing a more <em>logical</em> separation of responsibilities. Like monolithic deployments, microservices are traditionally long-running processes being executed on dedicated or virtualized machinery.</p>
+
+    <p>Finally, <strong>serverless architectures</strong>. Think of them as a natural evolution or extension to microservices.</p>
+
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%202-min.png" alt="" />**</p>
+
+    <p>This is a microservice architecture driven to the extreme. A single chunk of code, or ‘function’ is executed anytime a distinct event occurs. This event might be a user requesting to login, or a user attempting to upload a file. These functions are traditionally very short running in nature — the function ‘wakes up’, executes some amount of with a duration of 10 milliseconds to 10 seconds, and is then terminated automatically by the service provider. No persistence, no dedicated machinery — in effect, you have no idea where your code is running at any given time. The benefit to serverless architectures shares some of the benefits of a microservices based approach, where each function has some distinct responsibility and logical separation.</p>
+
+    <p><strong>The Test App</strong></p>
+
+    <p>To compare the two services, I wrote a small React Native application with the intent of providing one-time-password authentication.</p>
+
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%203-min.png" alt="" />**</p>
+
+    <p>Rather than expecting a user to enter a tedious email and password combination, the user is expected to enter just their phone number. Once we have their phone number in hand, we generate a short six-digit token then text it to the user via SMS. The user then enters the code into our app, after which we expect them to enter the code back into our app. If they enter the correct code, great, they are now authenticated.</p>
+
+    <p>Given that the code is the key authenticating factor, its something that clearly shouldn’t be generated or stored directly on the user’s mobile device. Instead, we should generate and store the code somewhere else, somewhere that the user doesn’t have any type of read access to. <strong>Enter our serverless functions!</strong></p>
+
+    <p>Its always important to plan out the different cloud functions that will be created. In this case, I see three clear phases of the login process where some amount of logic must be executed in a secure environment:</p>
+
+    <ol>
+      <li>
+        <p>Create a new user (sign up)</p>
+      </li>
+
+      <li>
+        <p>Generate, save, and text a new login code (sign in)</p>
+      </li>
+
+      <li>
+        <p>Verify a login code</p>
+      </li>
+    </ol>
+
+    <p>Each function we create is assigned a unique name, usually to identify its purpose. I followed a simple nomenclature, opting for ‘createUser’, ‘requestOneTimePassword’, and ‘verifyOneTimePassword’.</p>
+
+    <p>With these three functions in mind, let’s walk through the deployment process</p>
+
+    <h2 id="functioncreationlambda"><strong>Function Creation — Lambda</strong></h2>
+
+    <p>Creation of functions with Lambda can take two forms, either direct access of the Lambda Console or through the <a href="http://serverless.com">Serverless</a> framework. I chose to use the Serverless framework, as it made deployment (later) much easier.</p>
+
+    <p>Serverless encourages centralizing all configuration of your functions into a single YML file. The YML file requires the function name as it will be displayed on the Lambda console, the name of the function in your code base, and some configuration on <em>when</em> to execute the function. In our case, we wanted to execute the function on an incoming HTTP request with a method of POST.</p>
+
+    <p>Here’s the relevant snippet of config from the YML file for creating a new user:</p>
+
+    <pre>
+      <code>
+        functions:
+          userCreate:
+            handler: handler.userCreate
+            events:
+              - http:
+                  path: users
+                  method: post
+                  integration: lambda-proxy
+                  cors: true
+      </code>
+    </pre>
+    <p>One of the interesting aspects of AWS Lambda is that it is truly built assuming that you’ll have <em>any</em> type of event driving a function invocation, not just an incoming HTTP request issued by a client device. Other valid triggers might be a file upload to S3, or a deploy to some other service on AWS. Even though its clear to you and me that we only want to run the function with an incoming HTTP request, we still have to be awfully explicit.</p>
+
+    <p>I found writing the actual function to require a little more boilerplate than I’d like:</p>
+
+    <pre>
+      <code class="language-javascript">const firebase = require('./firebase');
+        const helpers = require('./helpers');
+        const handleError = helpers.handleError;
+        const handleSuccess = helpers.handleSuccess;
+
+        module.exports = function(event, context, callback) {
+          const body = JSON.parse(event.body);
+
+          if (!body.phone) {
+            return handleError(context, { error: 'Bad Input' });
+          }
+
+          const phone = String(body.phone).replace(/[^\d]/g, "");
+
+          firebase.auth().createUser({
+            uid: phone
+          })
+            .then(user =&gt; handleSuccess(context, { uid: phone }))
+            .catch((err) =&gt; handleError(context, { error: 'Email or phone in use' }));
+        }
+      </code>
+    </pre>
+    <p>You will notice a reference to firebase in here; I am still using Firebase for user management, even though the app is hosted on AWS infrastructure.</p>
+    <p>Yep, the request body has to be manually parsed. You’ll also notice that I made some ‘handleSuccess’ and ‘handleError’ helpers, to avoid some otherwise awful boilerplate. Here’s ‘handleSuccess’:</p>
+    <pre>
+      <code class="language-javascript">handleSuccess(context, data) {
+        context.succeed({
+          "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": JSON.stringify(data)
+            });
+          }
+        }
+      </code>
+    </pre>
+    <p>Again, don’t expect Lambda to handle JSON encoding or decoding for you, this is all manual.</p>
+    <h2 id="functioncreationgooglecloudfunctions">Function Creation — Google Cloud Functions</h2>
+    <p>Project creation with Cloud Functions was clearly easier. Its clear that the managers around this project assume that the most common use case is handling incoming HTTP requests, so there wasn’t a tremendous amount of configuration to route a particular event to a particular function.</p>
+    <p>Generation of the initial project was done by using the firebase CLI, which I hadn’t been previously familiar with. The CLI generates an entire Firebase project, which allows hosting important configuration like your security rules in a VCS, rather than relying entirely upon the console rule editor.</p>
+    <p>Definition of the functions took place inside of a Javascript file, where each export is essentially assumed to be a deployable function. For example:</p>
+    <pre>
+      <code class="language-javascript">
+        exports.createUser = functions.https.onRequest(createUser);
+      </code>
+    </pre>
+    <p>The actual function creation was far more straightforward.</p>
+    <pre>
+      <code class="language-javascript">const admin = require('firebase-admin');
+        module.exports = function(req, res) {
+          if (!req.body.phone) {
+            return res.status(422).send({ error: 'Bad Input' });
+          }
+          const phone = String(req.body.phone).replace(/[^\d]/g, "");
+
+          admin.auth().createUser({ uid: phone })
+            .then(user =&gt; res.send(user))
+            .catch(err =&gt; res.status(422).send({ error: err }));
+        }
+      </code>
+    </pre>
+    <p>Fans of Express JS will immediately be at home with the <em>req, res</em> function signature. The request and response objects use an identical API to Express’, which makes for a straightforward learning curve. Also notice no need for complicated boilerplate around handling responses.</p>
+    <p><strong>Winner: Google Cloud Functions</strong></p>
+    <p>Creating functions with Firebase is a clear winner. There’s less upfront configuration required, along with a far more palatable API. Of course, the caveat is that Firebase’s amount of configuration is smaller because there are fewer function triggers available on Firebase. No need to specify that a function should be executed on an incoming HTTP request when there are only <a href="https://firebase.google.com/docs/functions/">six</a> different ways of triggering them</p>
+    <h2 id="deployment"><strong>Deployment</strong></h2>
+    <p>Certainly not much to say here, as the deployment process is nearly identical on both platforms. Having set up the initial project with Serverless, deployment on the AWS side was as easy as a terminal command:</p>
+    <pre>
+      <code>
+        serverless deploy
+      </code>
+    </pre>
+    <p>Firebase deployment was similar by using the Firebase CLI</p>
+    <pre>
+      <code>
+        firebase deploy
+      </code>
+    </pre>
+    <p>In both cases, the time from initiating the deployment to seeing the function go live was about forty seconds. Nothing to lose sleep over.</p>
+
+    <p><strong>Winner: Tie</strong></p>
+
+    <h2 id="testinglambda"><strong>Testing — Lambda</strong></h2>
+
+    <p>If function creation was easier on Firebase, I can confidently say that testing your functions in a staging environment is <em>far</em> easier on AWS.</p>
+
+    <p>For the above project, I spent around two hours from start to finish on AWS, whereas the same exact project took around five hours, simply because of of the atrocious debug cycle. It all comes down to the presence of a simple tool on the AWS side — the beautiful blue <em>Test</em> button.</p>
+
+    <p>Once your function has been deployed, you can create a ‘test’ event, by manually creating a request to be sent directly to your function. In this case, I wanted to manually test the creation of a new user by providing a unique phone number. Using one of the sample templates, I manipulated the body of the request to include a phone number, then saved the test event.</p>
+
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%203-min.png" alt="" />**</p>
+
+    <p>Once your test event is created, that beautiful blue <em>Test *button will execute your function *instantaneously</em> and immediately show output from the execution in plain text, including not only the function’s request response, but also any log output coming from the function.</p>
+
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%205-min.png" alt="" />**</p>
+
+    <h2 id="testinggooglecloudfunctions">Testing — Google Cloud Functions</h2>
+
+    <p>Let me be clear: manual testing of Cloud Functions is a pain, stemming from two aspects:</p>
+
+    <ol>
+      <li>
+        <p>Cloud Function’s don’t have a built in testing solution with a quick feedback mechanism as AWS does</p>
+      </li>
+
+      <li>
+        <p>Getting logs to the Firebase console usually involves waiting for about one to five minutes</p>
+      </li>
+    </ol>
+    <p>To the first point, manual testing of Cloud Functions revolves around your favorite HTTP request utility, be it curl or Postman. If your function fails to execute due to some hidden typo, rest assured that you’ll get a 50x status code without much more information, rather than any helpful debug output.</p>
+
+    <p>If you <em>do</em> want to get information out, you’ll be using Firebase’s Function console.</p>
+
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%206.png" alt="" />**</p>
+
+    <p>At the console, you’re limited to seeing only logged information, as opposed to AWS’s console which shows both log statements and function response bodies.</p>
+
+    <p>But the biggest gripe I have is how <em>long</em> it takes to see logs appear here. With stopwatch in hand, it would take one to five minutes of waiting to see any log information pop up from a single request. That terrible feedback loop lead to a lot of confusion as I tried to keep the order in which I’d execute test requests in mind. Let’s face it; when you have a long feedback loop like that, you may immediately execute one to five manual tests, then try to decipher the output you receive a few minutes later. Not fun.</p>
+
+    <p><strong>Winner: AWS Lambda</strong></p>
+
+    <h2 id="pricing">Pricing</h2>
+
+    <p>In general, you can count on paying for function invocations based on two metrics: the number of invocations, and the amount of time each invocation takes to execute, modified by the hardware that the function is executed upon.</p>
+
+    <p>At the time of this writing, Cloud Functions cost $0.40 per million invocations (after two million that are free), while Lambda clocks in at $0.20 per million invocations (after one million that are free).</p>
+
+    <p>Execution environment refers to the hardware that is used to run the function. More powerful hardware, more cost. Its a bit of an exercise in engineering economics, however. If you’re running a computation heavy function that takes some non-zero amount of time to execute, you might think to use a less powerful machine, as it costs less money per millisecond of execution time. But its a double edged sword; the slower the machine, the more milliseconds you’re spending! I’d love to do some followup work to figure out the sweet spot in machine size for compute-heavy tasks.</p>
+
+    <p>Google Cloud Function’s invocation time pricing is a function of the CPU <em>plus</em> RAM size, whereas AWS is a function of the RAM size <em>only.</em></p>
+
+    <p>For example, a function that takes 100ms to execute on a 256mb memory machine with a 400mhz cpu would cost the following on Google :</p>
+
+    <pre>
+      <code>  (256mb/1024(gb/mb)) * .5s * $0.0000025 gb-s
+        + (400mhz / 1000 ghz/mhz) * .5s * $0.0000100 gb-s
+        = $0.0000003125 + $0.000002
+        = $0.0000023125 per request
+      </code>
+    </pre>
+
+    <p>Or, put another way, you’d get 432,432 requests for $1 on Google, not including the free tier or flat cost of invocation.</p>
+
+    <p>On AWS Lambda, a similar setup would cost</p>
+
+    <pre>
+      <code>(256mb/1024(gb/mb) * .5s * $0.000000417 gb-s
+    = $0.0000000521
+    </code>
+  </pre>
+
+    <p>Or, put another way, you’d get 19,193,857 invocations for $1, not including the free tier or flat cost of invocation. A factor of four, really? Someone check my math, please.</p>
+
+    <p><strong>Winner: AWS</strong></p>
+
+    <h2 id="conclusion">Conclusion</h2>
+
+    <p>At this point, AWS Lambda is head and shoulders above Google Cloud Functions. The testing cycle feels much tighter, and the pricing is currently no-contest. Function creation is a bit easier with Google Cloud, but as soon as you get that boilerplate down you’re good to go.</p>
+
+    <p>Officially, Google Cloud Functions are still in beta, so we might see price reductions at some point in time, or better tooling, but for now I can’t help but point friends over to AWS Lambda.</p>
+    </div>
+
+    <div id="post-controls">
+      <a href="/blog/how-to-fix-error-listen-eaddrinuse-and-error-listen-eacces.html" class="ui right labeled right floated icon button">
+        <i class="right arrow icon"></i>
+        Next Post
+      </a>
+    </div>
+    <div class="vertical-space-80"></div>
+  </section>
+  <div id="disqus_thread" class="ui container"></div>
+  <script src="../assets/js/prism.44ed291397f3.js"></script>
+  <script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    var disqus_config = function() {
+      this.page.url = 'https://www.rallycoding.com/blog/serverless-showdown-aws-lambda-vs-firebase-google-cloud-functions.html';
+      this.page.identifier = 'rallycoding-post-2';
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://rallycoding.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</body>
+
+</html>

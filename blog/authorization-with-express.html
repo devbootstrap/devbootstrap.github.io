@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Express middleware is an extremely effective way of securing your application with roles and permissions.  Learn how to starting building your authorization system here.">
+  <meta property="og:url" content="https://www.rallycoding.com/blog/authorization-with-express/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Authorization with Express" />
+  <meta property="og:description" content="Express middleware is an extremely effective way of securing your application with roles and permissions.  Learn how to starting building your authorization system here." />
+  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
+  <meta property="og:image:width" content="1792" />
+  <meta property="og:image:height" content="963" />
+
+  <title>RallyCoding: Authorization with Express</title>
+
+  <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
+
+  </head>
+</head>
+<body>
+  <section id="hero">
+    <div class="ui container">
+      <div id="header" class="ui borderless menu">
+        <div class="header item">
+          <h4 id="logo" onclick="document.location.href='/'">
+            RallyCoding
+          </h4>
+        </div>
+        <div id="nav" class="right menu">
+          <a class="item nav-courses " href="/courses">Courses</a>
+          <a class="item nav-blog " href="/blog">Blog</a>
+          <a class="item nav-videos " href="/videos">Videos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="post" class="ui container">
+    <h1>Authorization with Express</h1>
+    <p>A student asked:</p>
+    <blockquote>
+      <p>I am starting a new project using what I have learnt and I was wondering: what do you use in your projects to handle roles and permissions? Custom code? existing packages? I assume it has to be server side logic.
+        Any suggestion is more than welcomed.
+        Thanks again for the courses, I hope there is more to come!</p>
+    </blockquote>
+    <h2>Authentication vs. Authorization</h2>
+
+    <p>First, it is important to note the difference between authentication and authorization. Authentication is used to establish and confirm the identity of a user. Authorization determines what an authenticated user has access to. It is easy to spot apps with authentication; generally, all you need to look for is a place to login or register. However, authorization comes in many forms, from only being able to delete your own comments, to seeing a different set of options in a navigation tab, to being able to view app analytics. The most common instance of authorization that you might see is the existence of &quot;admin&quot; priviliges in an app.</p>
+
+    <p>Authentication is a fairly standardized process. Using a Node backend, you will find that the <a href="http://passportjs.org/">Passport</a> and <a href="https://www.npmjs.com/package/bcrypt">Bcrypt</a> libraries are popular choices for implemention. Unfortunately, finding libraries for authorization is more difficult because of how customized roles and permissions are. They need to be designed on a case by case basis to match the requirements of the app being built.</p>
+
+    <h2>The Server is the Gatekeeper</h2>
+
+    <p>Ultimately, secure and effective authentication and authorization systems <strong><em>MUST</em></strong> be implemented on the backend. As mentioned many times in the <a href="https://www.rallycoding.com/courses/advanced-react-and-redux/">Advanced React Course</a>, security has to be implemented by the server side, not by the client - you must always assume that users are able to circumvent any client-side security you set up.</p>
+
+    <p>Now, of course, you can have checks on the client side. It will provide faster performance for the user. But client-side checks can always be bypassed, so the server must act as the gatekeeper.</p>
+
+    <p>That being said, how can you start implementing an system of authorization?</p>
+
+    <h2>Middleware to the Rescue</h2>
+
+    <p>Express provides a lot of flexibility when handling requests. Often, handling requests looks like this:</p>
+
+    <pre><code class="language-javascript">app.get(&#39;/&#39;, (req, res) =&gt; {//do something and send a response});</code></pre>
+
+    <p>The flexibility lies in the fact that a sequence of functions can be added to the request handler:</p>
+    <pre>
+      <code class="language-javascript">app.get(&#39;/&#39;, doSomething, (req, res) =&gt; {//do something and send a response});
+      const doSomething = (req, res, next) =&gt; {
+        // do something with the request
+        // then move to the next function
+        next();
+        // calling next is the only way move
+        // to the next function
+      };
+      </code>
+    </pre>
+    <p>The function <code>doSomething</code> is called middleware. In general, it is useful when reusable logic is needed to run before the final route handler. Middleware is the perfect tool for adding authorization logic. You can even have multiple middlewares run, in order.</p>
+    <pre>
+      <code class="language-javascript">// 3 middlewares that will run in order
+        app.get(&#39;/&#39;,
+          doSomething,
+          doThisNext,
+          andThenThis,
+          (req, res) =&gt; {
+          //do something and send a response
+        });
+      </code>
+    </pre>
+    <p>In the case above, the functions will run, in order, one after the other. Each middleware is passed the <code>req</code>, <code>res</code>, and <code>next</code> parameters. Most importantly, <code>next()</code> must be called at some point in each function so that Express knows to move to the next function.</p>
+
+    <h2>Implementing Middleware</h2>
+
+    <p>Using middleware, I would likely write a function to verify the user&#39;s role, then secure each route in the app with the appropriate middleware.</p>
+
+    <p>For example, I might have a <code>requireAdmin</code> middleware, that looks something like this:</p>
+
+    <pre>
+      <code class="language-javascript">const requireAdmin = (req, res, next) =&gt;
+        {
+          if (!req.user.isAdmin) {
+            return res.status(401).send({ error: &#39;You are not authorized&#39; });
+          }
+          next();
+        }
+      </code>
+    </pre>
+    <p>Or a middleware to assert that a resource (like a blog post) that a user is trying to edit belongs to them:</p>
+    <pre>
+      <code class="language-javascript">// Node 7.6+ is required to use async/await
+        const requireUserIsPostOwner = async (req, res, next) =&gt; {
+          let post = await Post.find(req.params.id);
+
+          if (req.user.id !== post.ownerId) {
+            return res.status(401).send({ error: &#39;You do not own this post.&#39; });
+          }
+          next();
+        }
+      </code>
+    </pre>
+    <p>Then you could mix and match these middlewares. If you had a route that allows a user to delete a post only if they are an admin and the owner of the post, you could do:</p>
+    <pre>
+      <code class="language-javascript">app.delete(&#39;/posts/:id&#39;, requireAdmin, requireUserIsPostOwner, (req, res) =&gt; {
+        // logic to delete post
+      });
+      </code>
+    </pre>
+    <p>The beauty of this approach is that each middleware is easily testable and can easily be composed into dramatically more complicated authorization structures. In addition, the reusability of middleware cut down on redundant code and makes it even more powerful:</p>
+    <pre>
+      <code class="language-javascript">app.use(&#39;/posts&#39;, requireAdmin, requireUserIsPostOwner, handleRoute);
+        // Every request to posts, including nested routes, will run the
+        // requireAuth and requireUserIsPostOwner middleware.
+      </code>
+    </pre>
+    <p>As you can see, Express middleware is an excellent option for handling authorization. It will significantly reduce the amount of code required in your route handlers, while making the development and maintenance of your application simpler.</p>
+    <div id="post-controls">
+      <a href="/blog/coding-challenge-asyncawait-and-react.html" class="ui labeled left floated icon button">
+        <i class="left arrow icon"></i>
+        Previous Post
+      </a>
+      <a href="/blog/mlab-development-with-a-database-as-a-service.html" class="ui right labeled right floated icon button">
+        <i class="right arrow icon"></i>
+        Next Post
+      </a>
+    </div>
+    <div class="vertical-space-80"></div>
+  </section>
+
+  <div id="disqus_thread" class="ui container"></div>
+  <script src="../assets/js/prism.44ed291397f3.js"></script>
+  <script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    var disqus_config = function() {
+      this.page.url = 'https://www.rallycoding.com/blog/authorization-with-express.html';
+      this.page.identifier = 'rallycoding-post-8';
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://rallycoding.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Learn how to use async/await to make your code more readable with these interactive coding challenges.">
+    <meta property="og:url" content="https://www.rallycoding.com/blog/coding-challenge-asyncawait-and-react/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Coding Challenge: Async/Await and React" />
+    <meta property="og:description" content="Learn how to use async/await to make your code more readable with these interactive coding challenges." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
+    <meta property="og:image:width" content="1792" />
+    <meta property="og:image:height" content="963" />
+
+    <title>RallyCoding: Coding Challenge: Async/Await and React</title>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
+
+  </head>
+</head>
+<body>
+  <section id="hero">
+    <div class="ui container">
+      <div id="header" class="ui borderless menu">
+        <div class="header item">
+          <h4 id="logo" onclick="document.location.href='/'">
+            RallyCoding
+          </h4>
+        </div>
+        <div id="nav" class="right menu">
+          <a class="item nav-courses " href="/courses">Courses</a>
+          <a class="item nav-blog " href="/blog">Blog</a>
+          <a class="item nav-videos " href="/videos">Videos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="post" class="ui container">
+    <style>
+      pre {
+        width: 80%;
+        margin-left: 10% !important;
+      }
+
+      .pen-wrapper {
+        padding: 0 3%;
+      }
+    </style>
+    <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+    <h1>Coding Challenge: Async/Await and React</h1>
+    <p style="color: grey;"><em>by Alec Barlow</em></p>
+    <p>Disclaimer: This article assumes the reader has some understanding of JavaScript, Promises, and React.</p>
+    <p>When I first started learning JavaScript, the hardest concept for me to understand was the non-blocking, asynchronous nature of certain blocks of code. I had just spent the previous six months learning Python, and in addition to reading books, line by line, for most of my life, I thought I had a pretty good understanding of how code runs. In simplified terms, a line of code is evaluated, once <strong>complete</strong>, the line below it is then evaluated. But after spending some time with JavaScript, and a few grey hairs later, I realized that my previous assumptions were in need of garbage collection.</p>
+    <div style="text-align: center;">
+      <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/HowJsWorks.png" alt="How JavaScript Works" style="width: 100%; max-width: 600px;" />
+    </div>
+    <h2>Blocking vs. Non-Blocking Code</h2>
+    <p>Let compare two snippets of code, one in Python, the other in JavaScript. Both blocks will output the same thing (sort of).</p>
+    <pre>
+    <code class="language-python">
+      # Python 3 (Blocking)
+
+      import requests
+
+      def getUsers():
+        response = requests.get('https://jsonplaceholder.typicode.com/users')
+        fetchedUsers = response.json()
+        return fetchedUsers
+
+      users = getUsers()
+      print(users) # prints [{'id': 1, 'name': 'Leanne Graham'...}]
+    </code>
+  </pre>
+    <pre>
+    <code class="language-javascript">
+      // JavaScript (Non-Blocking)
+
+      const getUsers = () => {
+        return fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+      }
+
+      let users;
+      getUsers()
+      .then(fetchedUsers => {
+        users = fetchedUsers;
+        console.log(users); // logs [{'id': 1, 'name': 'Leanne Graham'...}]
+      });
+      console.log(users);
+      // users is undefined...
+      // Can we even assign the data from the request to it?
+      // Sounds like the beginnings of 'callback hell'.
+    </code>
+  </pre>
+    <p>
+      Do I need to ask which snippet is easier to read and follow along?
+    </p>
+    <p>Now, this article is not about the ins and outs of managing synchronous vs. asynchronous code. It is not a rant about JavaScript, either. The purpose of this article is to teach you a new syntax pattern, using interactive examples, that will drastically improve the readability of your code, because writing code that can be understood by other humans is arguably the most important part of being a programmer.</p>
+
+    <h2>Async/Await</h2>
+    <p>The <code>async function</code> and <code>await</code> operator were initially defined in ES2017. They are supported in <a href="https://nodejs.org">Node 7.6</a> and above and in the <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> boilerplate package. In the following CodePen examples, you will see how these keywords can be used to clean up the code of a React component. The code in each example is fully editable, and for some of them, implementing the solution will be up to you. The app used is the same for each example; it makes a request for some fake user data, then renders cards for each user. In addition, each solution only changes the <code>componentDidMount</code> method of UserList, which starts on line 16 of each Pen's Babel tab.</p>
+    <p>Also, CodePen does not currently support async/await by default. I had to add this Javascript resource: https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser-polyfill.min.js</p>
+
+    <h2>Example #1: The basics</h2>
+    <p>Starting on line 9, you will notice that this component currently uses <code>Promise</code> based syntax to obtain user data. Switching to async/await syntax will make the logic in <code>componentWillMount</code> much easier to understand. To do that, comment out lines 9-14 and add this:
+      <pre>
+    <code class="language-jsx">
+     async componentDidMount() {
+       let response = await api.users.get();
+       this.setState({users: response.data, apiError: null});
+     }
+    </code>
+  </pre>
+    </p>
+    <div class="pen-wrapper">
+      <p data-height="600" data-theme-id="dark" data-slug-hash="MojWNV" data-default-tab="js,result" data-user="abarlow85" data-embed-version="2" data-pen-title="a/a ex 1" data-editable="true" class="codepen">See the Pen <a href="https://codepen.io/abarlow85/pen/MojWNV/">a/a ex 1</a> by Alec Barlow (<a href="https://codepen.io/abarlow85">@abarlow85</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    </div>
+    <h2>Solution #1</h2>
+    <p>
+      Let's go through the solution line by line.</p>
+    <p>In the method declaration, <code>async componentDidMount()</code>, using <code>async</code> defines an asynchronous function. This does two things. First, when the method is called, it now returns a <code>Promise</code>. Second, the method can now contain the <code>await</code> expression.</p>
+
+    <p>The next line, <code>let response = await api.users.get();</code>, uses this expression. Using <code>await</code> pauses the execution of the method until the <code>Promise</code> to the right of it is resolved. And here is the awesome part, the resolved value (the response object) is assigned to our response variable.</p>
+
+    <p>Lastly, although nothing changed with <code>this.setState({users: response.data, apiError: null})</code>, accessing response.data would not be possible without using the async/await syntax. And to summarize, the entire methods now looks synchronous to the human eye, with each line completing before the one below it runs.
+    </p>
+    <h2>Example #2: Handling errors</h2>
+    <p>Handling errors is also straight forward. Simply put, instead of <code>.then</code> and <code>.catch</code> blocks of code, which is used in <code>Promise</code> based syntax, a try/catch block is used. Using the following template, comment out the <code>componentDidMount</code> method in the Pen below and write it again using async/await. The only lines that you need to worry about are 9-17.
+      <pre>
+        <code class="language-jsx">
+          // solution template
+          async componentDidMount() {
+            try {
+              // wait for the request to finish
+              // then update state
+            } catch (err) {
+              // do something with the err
+              // how about displaying it in the browser?
+              this.setState({users: [], apiError: err.message});
+
+              // to test, you can create an error by
+              // changing ROOL_URL on line 89
+            }
+          }
+        </code>
+      </pre>
+    </p>
+    <div class="pen-wrapper">
+      <p data-height="600" data-theme-id="dark" data-slug-hash="YQGjRM" data-default-tab="js,result" data-user="abarlow85" data-embed-version="2" data-pen-title="YQGjRM" data-preview="true" data-editable="true" class="codepen">See the Pen <a href="https://codepen.io/abarlow85/pen/YQGjRM/">YQGjRM</a> by Alec Barlow (<a href="https://codepen.io/abarlow85">@abarlow85</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    </div>
+    <h2>Solution #2</h2>
+    <p>
+      How did it go? Here is the answer that I came up with.
+    </p>
+    <pre>
+      <code class="language-jsx">
+        async componentDidMount() {
+          let response, error;
+          try {
+
+            response = await api.users.get();
+            this.setState({users: response.data, apiError: null});
+
+          } catch (err) {
+
+            error = err;
+            this.setState({users: [], apiError: err.message});
+
+            // test by changing ROOT_URL on line 89
+          }
+        }
+      </code>
+    </pre>
+    <p>
+      The first thing I want to point out is that I initialized <code>response</code> and <code>error</code> outside of the try/catch block. This is a useful practice because it means we can access the <code>response</code> or <code>err</code> objects outside of try/catch, and it will also help us avoid a <code>ReferenceError</code> because a variable is not defined.
+    </p>
+    <p>Second, the reason a try/catch block is used has to do with the <code>await</code> operator. When the <code>Promise</code> to the right of <code>await</code> resolves (resolve being the keyword), the resolved value gets assigned to our <code>response</code> variable. However, if the <code>Promise</code> is rejected, our code throws an error, and that error is automatically passed to the catch block.
+    </p>
+    <p>
+      Finally, our code is easier to read because we no longer have to worry about nesting callbacks (and the parameters they call when invoked) inside <code>.then</code> and <code>.catch</code>. It's time for something more difficult...
+    </p>
+    <h2>Example #3: Nested API calls (Advanced)</h2>
+    <p>So far, we have only been dealing with a single network request for data. But, what if we had to take the data from the first request and make a separate request for each data point. Sounds like a "real-world" example to me; using data from one request, get additional data using subsequent requests. For this example, using the array of users that we obtained from the first request, we are going to make additional requests in order to populate each user's card with his or her todo list.</p>
+    <p>The challenge I have for you is to rewrite some methods in the Pen below to use async/await syntax instead of <code>Promise</code> based syntax. There are only two methods you need to deal with, <code>componentDidMount</code> on lines 9 to 24 and <code>mapTodosToUser</code> on lines 26 to 37. No templates this time, sorry, but here is a review of the concepts behind async/await:</p>
+    <ul>
+      <li>Adding <code>async</code> next to a function declaration (i.e. <code>async function</code>, <code>async () =></code>, etc) causes it to return a promise</li>
+      <li>In order to use <code>await</code>, <code>async</code> must be added next to a function declaration</li>
+      <li>The <code>await</code> operator expects a <code>Promise</code> next to it</li>
+      <li>Use try/catch blocks to handle network request errors (or others errors)</li>
+    </ul>
+    <p>GOOD LUCK!</p>
+    <div class="pen-wrapper">
+      <p data-height="600" data-theme-id="dark" data-slug-hash="bRwOza" data-default-tab="js,result" data-user="abarlow85" data-embed-version="2" data-pen-title="a/a ex 3" data-preview="true" data-editable="true" class="codepen">See the Pen <a href="https://codepen.io/abarlow85/pen/bRwOza/">a/a ex 3</a> by Alec Barlow (<a href="https://codepen.io/abarlow85">@abarlow85</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    </div>
+    <h2>Solution #3</h2>
+    <p>
+      Hopefully, I didn't lose you. Here is my solution:
+    </p>
+    <pre>
+      <code class="language-jsx">
+      async componentDidMount() {
+        let response, error, users;
+        try {
+          response = await api.users.get();
+
+          // Remember that .map returns an array of Promises.
+          // await Promise.all() will wait for
+          // all of them to resolve (or be rejected)
+          users = await Promise.all(response.data.map(this.mapTodosToUser));
+
+          this.setState({users, apiError: null});
+
+        } catch (err) {
+
+          error = err;
+          this.setState({users: [], apiError: err.message});
+
+        }
+      }
+
+      async mapTodosToUser(user) {
+        let response, error;
+        try {
+
+          response = await api.users.todosForUser(user.id);
+          user.todos = response.data;
+
+        } catch (err) {
+
+          error = err;
+          user.todos = [{error:`Unable to get todos: ${err.message}`}];
+
+        }
+
+        return user;
+      }
+      </code>
+    </pre>
+    <p>
+      By now, you might be noticing a pattern when converting between <code>Promise</code> based syntax and async/await. Async/await is a wrapper around Promises, with the added benefits of having more control over your code flow, and, most importantly, having code that can be read synchronously to the human eye.
+    </p>
+    <p>Start using async/await now, and enjoy not having to worry about Promise chaining and "callback hell" anymore!</p>
+    <div id="post-controls">
+      <a href="/blog/the-buttons-arent-alright.html" class="ui labeled left floated icon button">
+        <i class="left arrow icon"></i>
+        Previous Post
+      </a>
+      <a href="/blog/authorization-with-express.html" class="ui right labeled right floated icon button">
+        <i class="right arrow icon"></i>
+        Next Post
+      </a>
+    </div>
+    <div class="vertical-space-80"></div>
+  </section>
+
+  <div id="disqus_thread" class="ui container"></div>
+  <script src="../assets/js/prism.44ed291397f3.js"></script>
+
+  <script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    var disqus_config = function() {
+      this.page.url = 'https://www.rallycoding.com/blog/coding-challenge-asyncawait-and-react.html';
+      this.page.identifier = 'rallycoding-post-7';
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://rallycoding.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</body>
+
+</html>

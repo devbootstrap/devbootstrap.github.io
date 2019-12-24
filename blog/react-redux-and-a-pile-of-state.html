@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="When building complex applications in the React Ecosystem, it is important to think carefully about managing application state.  This post will help you do that.">
+  <meta property="og:url" content="https://www.rallycoding.com/blog/react-redux-and-a-pile-of-state.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="React, Redux, and a Pile of State" />
+  <meta property="og:description" content="When building complex applications in the React Ecosystem, it is important to think carefully about managing application state.  This post will help you do that." />
+  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
+  <meta property="og:image:width" content="1792" />
+  <meta property="og:image:height" content="963" />
+
+  <title>RallyCoding: React, Redux, and a Pile of State</title>
+  <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
+</head>
+<body>
+  <section id="hero">
+    <div class="ui container">
+      <div id="header" class="ui borderless menu">
+        <div class="header item">
+          <h4 id="logo" onclick="document.location.href='/'">
+            RallyCoding
+          </h4>
+        </div>
+        <div id="nav" class="right menu">
+          <a class="item nav-courses " href="/courses">Courses</a>
+          <a class="item nav-blog " href="/blog">Blog</a>
+          <a class="item nav-videos " href="/videos">Videos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="post" class="ui container">
+    <h1>React, Redux, and a Pile of State</h1>
+
+    <p style="color: grey;"><em>by Alec Barlow</em></p>
+
+    <p>A common issue that developers have when building complex applications in the React Ecosystem is not thinking carefully about managing state. It is easy to assume that if you use a state manager like <a href="http://redux.js.org/">Redux</a>, then you must rely solely on Redux for every piece of state within an application. But more often that not, this strategy will increase the application codebase and make it more difficult to maintain as it grows in complexity. A very important part of knowing <em>how</em> to use Redux (or any state manager) is knowing <a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367"><em>when not to use it</em></a>.</p>
+
+    <p>The objective of this post is to increase your understanding of application state, and the different levels of it, as it pertains to React. Hopefully, with a better understanding of state, you will be able to build applications with cleaner and more maintainable logic.</p>
+
+    <h2>What is <em>State</em>?</h2>
+
+    <p>In the development world, there is a lot of jargon that, while beginners may not have a formal definition for, they have an intuitive understanding of. For me, application state was one of those terms, even though I understood the meaning behind it.</p>
+
+    <p>Application state is a collection of dynamic factors, which may or may not interact, that determine how an application behaves, or is displayed, at any given period of time.</p>
+
+    <p>Wow, that was a bit of a mouthful. How about something a little less academic:</p>
+
+    <p>Application state refers to a big pile of data that describes what information the app should show.</p>
+
+    <p>So what are some factors (things) that application state could be made up of?</p>
+
+    <ul>
+      <li>Authentication: Is a user logged in or anonomous?</li>
+      <li>Authorization: Based on authentication status, which menus are shown or hidden? </li>
+      <li>App Data: Are there blog posts to display?</li>
+      <li>Filtering: Which blog posts should display?</li>
+      <li>Toggling: Is this menu open or closed?</li>
+      <li>Selecting: Is the checkbox checked or not?</li>
+    </ul>
+
+    <p>The list can keep going. In essence, application state can be made up of all sorts of factors. Some factors might depend on others (App Data and Filtering), and some are isolated and self-contained (Toggling and Selecting). The key to effectively managing state in a React/Redux app is understanding the difference between dependent and isolated pieces of state.</p>
+
+    <p>But first, let&#39;s look at a real world example.</p>
+
+    <h2>The Traffic Cop</h2>
+
+    <p>Imagine there is a traffic cop controlling the flow of traffic at an intersection. What are some factors that make up the &quot;state&quot; of this example? The list below contains a handful of simple ones.</p>
+
+    <ul>
+      <li>The cars (App Data)</li>
+      <li>The traffic cop&#39;s hand signals (App Data)</li>
+      <li>The movement/direction of traffic (Filtering)</li>
+      <li>A car&#39;s windows; up or down? (Toggling)</li>
+      <li>The radio station playing in each car. (Selecting)</li>
+    </ul>
+
+    <p>So which factors depend on each other and which are isolated? A lot of interaction takes place between the cars, the traffic cop&#39;s hand signals, and the movement of traffic, so it is easy to see that these factors are dependent. Likewise, radio stations being played and windows being up or down are isolated factors pertaining to each car.</p>
+
+    <p>Alright, what&#39;s the point?</p>
+
+    <p>My point is this; pretend the traffic cop is acting like a state manager, should he or she be contolling each car&#39;s windows and radio? I don&#39;t think so.</p>
+
+    <h2>Divide State into Application and Component Levels</h2>
+
+    <p>A great thing about React is that you don&#39;t need to think of application state as one big pile. We can divide it up into application and component levels. When using Redux, application (Redux) state should contain data that many parts, if not all, of the app depends on. Component level state does not exist in Redux state, because only a specific component cares about it. In other words, component level state is isolated from the rest of the app.</p>
+
+    <p>One good rule for determining whether something should be a part of Redux or component level state is whether it is UI or data related. Going back to the first list of examples, toggling a menu or selecting an option are good condidates for using component level state. On the other hand, backend data (i.e. blog posts), authentication status, or any other data that multiple components depend on should be maintained in Redux state.</p>
+
+    <p>This gets trickier when thinking about filtering data, but we can still break down the process. The filter option selected is still UI related, and still belongs in component level state. Likewise, the filtered data still belongs in Redux state. It isn&#39;t neccessary to manage the filter option in Redux state. All we need is a single action initiated from the component with filtering instructions, and our separation of concerns remains.</p>
+
+    <h2>Don&#39;t forget about <code>this.setState</code></h2>
+
+    <p>As tempting as it is to throw every piece of state into Redux, doing so will not make it easy to maintain complex applications. Knowing how to manage state appropriately is an important step is mastering application development within the React Ecosystem. So remember to ask, &quot;Is it UI, or data related?&quot; If that doesn&#39;t help, you can always ask the traffic cop.</p>
+
+    <div id="post-controls">
+
+      <a href="/blog/windows-users-code-changes-not-causing-a-reload.html" class="ui labeled left floated icon button">
+        <i class="left arrow icon"></i>
+        Previous Post
+      </a>
+    </div>
+    <div class="vertical-space-80"></div>
+  </section>
+
+  <div id="disqus_thread" class="ui container"></div>
+  <script src="../assets/js/prism.44ed291397f3.js"></script>
+
+  <script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    var disqus_config = function() {
+      this.page.url = 'https://www.rallycoding.com/blog/react-redux-and-a-pile-of-state';
+      this.page.identifier = 'rallycoding-post-12';
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://rallycoding.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</body>
+</html>

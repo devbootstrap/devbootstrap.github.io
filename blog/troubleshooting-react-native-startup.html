@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="For students enrolled in The Complete React Native and Redux Course and having trouble getting an app to start up in the emulator, this list of solutions to common issues may help.">
+  <meta property="og:url" content="https://www.rallycoding.com/blog/troubleshooting-react-native-startup/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Troubleshooting React Native Startup" />
+  <meta property="og:description" content="For students enrolled in The Complete React Native and Redux Course and having trouble getting an app to start up in the emulator, this list of solutions to common issues may help." />
+  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
+  <meta property="og:image:width" content="1792" />
+  <meta property="og:image:height" content="963" />
+
+  <title>RallyCoding: Troubleshooting React Native Startup</title>
+  <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
+</head>
+<body>
+  <section id="hero">
+    <div class="ui container">
+      <div id="header" class="ui borderless menu">
+        <div class="header item">
+          <h4 id="logo" onclick="document.location.href='/'">
+            RallyCoding
+          </h4>
+        </div>
+        <div id="nav" class="right menu">
+          <a class="item nav-courses " href="/courses">Courses</a>
+          <a class="item nav-blog " href="/blog">Blog</a>
+          <a class="item nav-videos " href="/videos">Videos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="post" class="ui container">
+    <style>
+      .underline {
+        text-decoration: underline;
+      }
+
+      .issue {
+        border: 1px solid black;
+        padding: 14px;
+        margin-bottom: 14px;
+      }
+    </style>
+    <h1>Troubleshooting React Native Startup</h1>
+
+    <p>For students enrolled in
+      <a href="https://www.rallycoding.com/courses/the-complete-react-native-and-redux-course/" target="_blank">The Complete React Native and Redux Course</a> and having trouble getting an app to start up in the emulator, the list of issues below may help.
+
+      However, before looking at specific errors, make sure you have configured your development environment correctly. Check out <em>Building Projects with Native Code</em> in the <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank">Getting Started</a> section of React Native's documentation.</p>
+
+    <p>This list will be updated with more issues and information, as needed</p>
+    <ul>
+      <li>
+        <a href="#ESLint">[Linter] Error running ESLint</a>
+      </li>
+      <li>
+        <a href="#noBundleURL">No bundle URL present</a>
+      </li>
+      <li>
+        <a href="#CFBundleIdentifier">Print: Entry, ":CFBundleIdentifier", Does Not Exist</a>
+      </li>
+      <li>
+        <a href="#transformForEach">transform.forEach is not a function</a>
+      </li>
+      <li>
+        <a href="#ReactComponentWithPureRenderMixin">Unable to resolve module /ReactComponentWithPureRenderMixin</a>
+      </li>
+      <li>
+        <a href="#ViewPropTypes">undefined is not an object (evaluating '_reactNative.ViewPropTypes.style')</a>
+      </li>
+    </ul>
+    <div id="ESLint" class="issue">
+      <h3>
+        [Linter] Error running ESLint
+      </h3>
+      <p>As of July 13, 2017, there is an issue with NPM version 5 that is causing libraries that eslint-config-rallycoding depends on to be installed in the incorrect directory. There should be an update to NPM that fixes this soon.</p>
+      <h4 class="underline">Solution 1:</h4>
+      <p>Manually install the dependent libraries, specifying the correct version:<br>
+        <code>npm install eslint-plugin-react@6.10.3 eslint-plugin-jsx-a11y@2.2.3 eslint-plugin-import@1.16.0</code><br>
+        Also, eslint-config-rallycoding requires version 3.X of ESLint, but this should have installed correctly. Finally, you may need to quit the test editor and reopen the project for the linter to work correctly.
+      </p>
+      <h4 class="underline">Solution 2:</h4>
+      <p>
+        Use <a href="https://yarnpkg.com/en/" target="_blank">Yarn</a>, instead of NPM, to install dependencies.
+      </p>
+    </div>
+    <div id="noBundleURL" class="issue">
+      <h3>No bundle URL present</h3>
+      <a href="https://github.com/facebook/react-native/issues/12754" target="_blank">GitHub Issue if solutions do not work</a>
+      <h4 class="underline">Solution 1: iOS</h4>
+      <p>Delete the build folder and rerun the project<br>
+        <code>rm -rf ios/build</code>
+        <br>
+        <code>react-native run-ios</code>
+      </p>
+      <h4 class="underline">Solution 2: iOS</h4>
+      <p>Open a second terminal window in the project directory and run <code>npm start</code>. Then in the first terminal window, run <code>react-native run-ios</code>.</p>
+    </div>
+
+    <div id="CFBundleIdentifier" class="issue">
+      <h3>Print: Entry, ":CFBundleIdentifier", Does Not Exist</h3>
+      <a href="https://github.com/facebook/react-native/issues/7308" target="_blank">GitHub Issue if solutions do not work</a>
+      <h4 class="underline">
+        Solution 1:
+      </h4>
+      <p>
+        Remove spaces from file or directory names.<br>
+        Use<code>/path/to/ReactNative/app1</code>
+        instead of <code>/path/to/React Native/app1</code>.
+      </p>
+      <h4 class="underline">
+        Solution 2:
+      </h4>
+      <p>
+        Make sure port 8081 is not already in use. On a Mac, run the following command to see if any processes are running on port 8081:<br>
+        <code>lsof -i :8081</code><br>
+        If a process is running, terminate it using this command:<br>
+        <code>kill -9 &lt;PID&gt;</code><br>
+        On Windows, follow these <a href="https://stackoverflow.com/questions/48198/how-can-you-find-out-which-process-is-listening-on-a-port-on-windows" target="_blank">instructions</a>.
+      </p>
+      <h4 class="underline">
+        Solution 3:
+      </h4>
+      <p>In the project directory, run the terminal command <code>react-native upgrade</code>. You can also use <a href="https://github.com/facebook/react-native/tree/master/react-native-git-upgrade" target="_blank">react-native-git-upgrade</a> to do this.</p>
+      <h4 class="underline">Solution 4:</h4>
+      <p>Specify a version of React Native when initializing a project: <br>
+        <code>react-native init ProjectName --version 0.44.2</code>
+      </p>
+    </div>
+    <div id="transformForEach" class="issue">
+      <h3>transform.forEach is not a function</h3>
+      <a href="https://github.com/facebook/react-native/issues/13765" target="_blank">GitHub Issue if solutions do not work</a>
+      <h4>Solution 1:</h4>
+      <p>Install the PropTypes library: <br>
+        <code>npm install prop-types --save</code>
+      </p>
+    </div>
+    <div id="ReactComponentWithPureRenderMixin" class="issue">
+      <h3>Unable to resolve module /ReactComponentWithPureRenderMixin</h3>
+      <p>In the course, this issue can occur when a version of React Native Router Flux (RNRF) is incompatible with a version of React Native</p>
+      <h4>Solution 1:</h4>
+      <p>Initialize the project using the same versions of React Native and RNRF used in the course:<br>
+        <code>react-native init manager --version 0.34.1</code>
+        <br>
+        <code>npm install react-native-router-flux@3.35.0 --save</code>
+      </p>
+    </div>
+    <div id="ViewPropTypes" class="issue">
+      <h3>undefined is not an object (evaluating '_reactNative.ViewPropTypes.style')</h3>
+      <p>In the course, this issue can occur when a newer version of React Native Router Flux (RNRF) is used with an older version of React Native</p>
+      <h4>Solution 1:</h4>
+      <p>Initialize the project using the same versions of React Native and RNRF used in the course:<br>
+        <code>react-native init manager --version 0.34.1</code>
+        <br>
+        <code>npm install react-native-router-flux@3.35.0 --save</code>
+      </p>
+    </div>
+    <div id="post-controls">
+      <a href="/blog/mlab-development-with-a-database-as-a-service.html" class="ui labeled left floated icon button">
+        <i class="left arrow icon"></i>
+        Previous Post
+      </a>
+      <a href="/blog/windows-users-code-changes-not-causing-a-reload.html" class="ui right labeled right floated icon button">
+        <i class="right arrow icon"></i>
+        Next Post
+      </a>
+    </div>
+    <div class="vertical-space-80"></div>
+  </section>
+  <div id="disqus_thread" class="ui container"></div>
+  <script src="../assetsjs/prism.44ed291397f3.js"></script>
+  <script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    var disqus_config = function() {
+      this.page.url = 'https://www.rallycoding.com/blog/troubleshooting-react-native-startup.html';
+      this.page.identifier = 'rallycoding-post-10';
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://rallycoding.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</body>
+</html>
