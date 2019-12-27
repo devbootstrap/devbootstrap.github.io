@@ -1,47 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Trying to run a Webpack-Dev-Server or Node JS Server?  Learn how to fix the error &quot;Error: Listen EADDRINUSE&quot; when you start your server up.">
-  <meta property="og:url" content="https://www.rallycoding.com/blog/how-to-fix-error-listen-eaddrinuse-and-error-listen-eacces/" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="How To Fix &quot;Error: Listen EADDRINUSE&quot; and &quot;Error: Listen EACCES&quot;" />
-  <meta property="og:description" content="Trying to run a Webpack-Dev-Server or Node JS Server?  Learn how to fix the error &quot;Error: Listen EADDRINUSE&quot; when you start your server up." />
-  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
-  <meta property="og:image:width" content="1792" />
-  <meta property="og:image:height" content="963" />
+<title>Jekyll Site</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
 
-
-
-  <title>RallyCoding: How To Fix &quot;Error: Listen EADDRINUSE&quot; and &quot;Error: Listen EACCES&quot;</title>
-  <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
-  <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
-  <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
 </head>
-<body>
-  <section id="hero">
-    <div class="ui container">
-      <div id="header" class="ui borderless menu">
-        <div class="header item">
-          <h4 id="logo" onclick="document.location.href='/'">
-            RallyCoding
-          </h4>
-        </div>
-        <div id="nav" class="right menu">
-          <a class="item nav-courses " href="/courses">Courses</a>
-          <a class="item nav-blog " href="/blog">Blog</a>
-          <a class="item nav-videos " href="/videos">Videos</a>
-        </div>
+<body class="">
+  <nav class="navbar navbar-expand-lg navbar-light p-5">
+    <div class="container">
+      <a class="navbar-brand text-white" href="/"><h3>Devbootstrap</h3></a>
+      <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses"><h6>Courses</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog"><h6>Blog</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true"><h6>Video</h6></a>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <section id="post" class="ui container">
-    <style>
-
-    </style>
+  <div class="container mt-4">
     <h1>How To Fix &quot;Error: Listen EADDRINUSE&quot; and &quot;Error: Listen EACCES&quot;</h1>
 
     <p>So you cloned your Node or Webpack project, run that <code>npm run start</code> then get confronted with a nasty error message, something like <code>Error: Listen EADDRINUSE</code> or <code>Error: Listen EACCES</code>. Let&#39;s first discuss why you&#39;re seeing this error message then talk about how to solve it.</p>
@@ -56,10 +45,14 @@
 
     <ol>
       <li>Figure out what port your app is trying to use. This is usually shown in the error message.
-        <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/howtofix-eaddrinuse/1.png" alt="">
+      <pre class="bg-secondary">
+        <code>
+          Error: Lisent EADDRINUSE 127.0.0.1:4172
+        </code>
+      </pre>
         In this screenshot, the port is everything <em>after</em> the colon (:), so 4172.</li>
       <li>Use the port to figure out what process is currently running on your given port. You can do this by opening a terminal window and running <code>lsof -i tcp:&lt;yourport&gt;</code>. For example, <code>lsof -i tcp:8080</code>. This will tell you the process that is currently using this port.
-        <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/howtofix-eaddrinuse/2.png" alt="">
+        <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/howtofix-eaddrinuse/2.png" alt="" style="width: 100%;">
         Note the number under the &quot;pid&quot; column. In this case, the PID is 69498</li>
       <li>Kill this running process. Run <code>killall &lt;pid&gt;</code>, so <code>killall 69498</code>.</li>
       <li>All done!</li>
@@ -69,47 +62,44 @@
     <ol>
       <li>In your project directory, open up the <code>webpak.config.js</code> file.</li>
       <li>Find a section in the config object called <code>devServer</code>. If it doesn&#39;t exist, create it. You&#39;re looking for something like this:
-        <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/howtofix-eaddrinuse/3.png" alt=""></li>
+        <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/howtofix-eaddrinuse/3.png" style="width: 100%;" alt=""></li>
       <li>Add in the keyvalue pair of <code>port: 8081</code>, or whatever port you want to move your webpack dev server to use. Your <code>webpack.config.js</code> file should now look like this:
-        <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/howtofix-eaddrinuse/4.png" alt=""></li>
+        <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/howtofix-eaddrinuse/4.png"  style="width: 100%;" alt=""></li>
       <li>Start your server up! Starting the server will be slightly different, but usually it will use a command like <code>npm run start</code>.</li>
       <li>Open the server up. In your browser, navigate to <code>localhost:8081</code>. If you changed the dev server to use a port other than <code>8081</code>, then you&#39;ll update the URL accordingly. For example, if you changed the port to <code>4172</code>, then visit <code>localhost:4172</code>.</li>
     </ol>
 
     <div id="post-controls">
-
-      <a href="/blog/serverless-showdown-aws-lambda-vs-firebase-google-cloud-functions.html" class="ui labeled left floated icon button">
-        <i class="left arrow icon"></i>
+      <a class = "btn bg-primary" href="/blog/coding-challenge-asyncawait-and-react.html" class="ui labeled left floated icon button">
         Previous Post
       </a>
-      <a href="/blog/reducing-boilerplate-around-axios-requests-with-jwts.html" class="ui right labeled right floated icon button">
-        <i class="right arrow icon"></i>
+      <a class = "btn bg-primary" href="/blog/mlab-development-with-a-database-as-a-service.html" class="ui right labeled right floated icon button">
         Next Post
       </a>
     </div>
-    <div class="vertical-space-80"></div>
-  </section>
-
-  <div id="disqus_thread" class="ui container"></div>
-  <script src="../assets/js/prism.44ed291397f3.js"></script>
-
-  <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    var disqus_config = function() {
-      this.page.url = 'https://www.rallycoding.com/blog/how-to-fix-error-listen-eaddrinuse-and-error-listen-eacces.html';
-      this.page.identifier = 'rallycoding-post-3';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://rallycoding.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  <br><br>
+  <!-- footer -->
+  <nav class="navbar navbar-expand-lg navbar-light p-4">
+    <div class="container mt-1">
+      <p class="text-white mt-1">Rotati@2019 devbootstrap</p>
+      <div class="collapse navbar-collapse" id=""></div>
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true">Video</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

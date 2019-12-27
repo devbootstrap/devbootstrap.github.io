@@ -1,79 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cloud services can significantly simplify the steps required for configuring your development environment.  This tutorial shows how to set up a database from mLab and connect it to your server.">
-  <meta property="og:url" content="https://www.rallycoding.com/blog/mlab-development-with-a-database-as-a-service/" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="mLab: Development with a Database-as-a-Service" />
-  <meta property="og:description" content="Cloud services can significantly simplify the steps required for configuring your development environment.  This tutorial shows how to set up a database from mLab and connect it to your server." />
-  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
-  <meta property="og:image:width" content="1792" />
-  <meta property="og:image:height" content="963" />
+<title>Jekyll Site</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
 
-
-
-  <title>RallyCoding: mLab: Development with a Database-as-a-Service</title>
-  <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
-  <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
-  <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
 </head>
-<body>
-  <section id="hero">
-    <div class="ui container">
-      <div id="header" class="ui borderless menu">
-        <div class="header item">
-          <h4 id="logo" onclick="document.location.href='/'">
-            RallyCoding
-          </h4>
-        </div>
-        <div id="nav" class="right menu">
-          <a class="item nav-courses " href="/courses">Courses</a>
-          <a class="item nav-blog " href="/blog">Blog</a>
-          <a class="item nav-videos " href="/videos">Videos</a>
-        </div>
+<body class="">
+  <nav class="navbar navbar-expand-lg navbar-light p-5">
+    <div class="container">
+      <a class="navbar-brand text-white" href="/"><h3>Devbootstrap</h3></a>
+      <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses"><h6>Courses</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog"><h6>Blog</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true"><h6>Video</h6></a>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
-  <section id="post" class="ui container">
-    <style>
-      img {
-        max-width: 70%
-      }
+  </nav>
 
-      .img-wrapper {
-        text-align: center;
-      }
-    </style>
+  <div class="container mt-4">
     <h1>mLab: Development with a Database-as-a-Service</h1>
 
     <p>With the growth of cloud-based services, developing in a local environment is requiring less and less configuration of that environment. Installing and configuring database software can be particularly tricky for those just getting started, so why not take advantage of services in the cloud?</p>
 
     <p>If you are developing apps that utilize MongoDB, <a href="https://mlab.com/">mlab</a> provides are great service to get you connected to your database quickly, and from anywhere. Most importantly, there is a <a href="https://mlab.com/plans/pricing/#plan-type=sandbox"><strong>free tier</strong></a>.</p>
 
-    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab1.jpg" alt="mLab Landing Page"></p>
+    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab1.jpg" alt="mLab Landing Page" style="width: 50%;"></p>
 
     <h2>Getting Started</h2>
 
     <p>First, <a href="https://mlab.com/signup/">sign up</a> for an account and verify your email address. The main dashboard should look something like the image below, and you&#39;ll want to click on the option to create a new MongoDB Deployment.</p>
 
-    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab2.jpg" alt="Create a new database"></p>
+    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab2.jpg" alt="Create a new database" style="width: 50%;"></p>
 
     <p>Next, you will be given a choice of three database cloud providers. All three offer free plans, so choose your favorite company and be sure to select the Sandbox plan type.</p>
 
-    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab3.jpg" alt="Choose a plan"></p>
+    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab3.jpg" alt="Choose a plan" style="width: 50%;"></p>
 
     <p>After pressing continue, choose the region closest to you. Keep follow the creation wizard and then submit your order. Once the database has been successfully initialized, your user dashboard should look something like the image below.</p>
 
-    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab4.jpg" alt="User dashboard"></p>
+    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab4.jpg" alt="User dashboard" style="width: 50%;"></p>
 
     <h2>Creating a Database Admin</h2>
 
     <p>Click on the new database instance from the list. In order to connect to the database, we need to create a user with administrative priviledges. On the database detail page, click the Users tab, then click Add database user.</p>
 
-    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab5.jpg" alt="Add a user"></p>
+    <p class="img-wrapper"><img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/blog/mLab/mLab5.jpg" alt="Add a user" style="width: 50%;"></p>
 
     <p>Enter the admin&#39;s credentials, and leave the read only option unchecked.</p>
 
@@ -89,8 +73,8 @@
 
     <p>Copy this link into the file that connects to the database. Using a Node server with Mongoose.js, The code to connect would look like this:</p>
 
-    <pre>
-      <code class="language-javascript">mongoose.connect(
+    <pre class="bg-secondary">
+      <code class="">mongoose.connect(
         &#39;mongodb://&lt;dbuser&gt;:&lt;dbpassword&gt;@ds151662.mlab.com:51662/myfirstdatabase&#39;,
           /* if you receive a deprecation warning about the connection, add this option */
           { useMongoClient: true }
@@ -101,37 +85,36 @@
 
     <p>That&#39;s it! All other database related code will be the same as if you were using a local copy of MongoDB.</p>
     <div id="post-controls">
-      <a href="/blog/authorization-with-express.html" class="ui labeled left floated icon button">
-        <i class="left arrow icon"></i>
+      <a class = "btn bg-primary" href="/blog/coding-challenge-asyncawait-and-react.html" class="ui labeled left floated icon button">
         Previous Post
       </a>
-      <a href="/blog/troubleshooting-react-native-startup.html" class="ui right labeled right floated icon button">
-        <i class="right arrow icon"></i>
+      <a class = "btn bg-primary" href="/blog/mlab-development-with-a-database-as-a-service.html" class="ui right labeled right floated icon button">
         Next Post
       </a>
     </div>
-    <div class="vertical-space-80"></div>
-  </section>
-  <div id="disqus_thread" class="ui container">
   </div>
-  <script src="../assets/js/prism.44ed291397f3.js"></script>
-  <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    var disqus_config = function() {
-      this.page.url = 'https://www.rallycoding.com/blog/mlab-development-with-a-database-as-a-service.html';
-      this.page.identifier = 'rallycoding-post-9';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://rallycoding.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <br><br>
+  <!-- footer -->
+  <nav class="navbar navbar-expand-lg navbar-light p-4">
+    <div class="container mt-1">
+      <p class="text-white mt-1">Rotati@2019 devbootstrap</p>
+      <div class="collapse navbar-collapse" id=""></div>
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true">Video</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

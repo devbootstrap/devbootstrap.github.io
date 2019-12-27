@@ -1,0 +1,1051 @@
+.hvr-sweep-to-right{
+  transform:perspective(1px) translateZ(0);
+  position:relative;
+  transition-property:color;
+  transition-duration:.3s;
+  overflow:hidden
+}
+.hvr-sweep-to-right:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#1d2371,#0743a8);
+  transform:scaleX(0);
+  transform-origin:0 50%;
+  transition-property:transform;
+  transition-duration:.3s;
+  transition-timing-function:ease-out
+}
+.hvr-sweep-to-right:active:before,.hvr-sweep-to-right:focus:before,.hvr-sweep-to-right:hover:before{
+  transform:scaleX(1)
+}
+.mb-0{
+  margin-bottom:0!important
+}
+.mt-0{
+  margin-top:0!important
+}
+.mt-5{
+  margin-top:5px!important
+}
+.mt-1rem{
+  margin-top:14px!important;
+  margin-top:1rem!important
+}
+.mb-1rem{
+  margin-bottom:14px!important;
+  margin-bottom:1rem!important
+}
+.my-0{
+  margin-top:0;
+  margin-bottom:0
+}
+.mx-0{
+  margin-left:0;
+  margin-right:0
+}
+.mx-a{
+  margin-left:auto!important;
+  margin-right:auto!important
+}
+.pb-0{
+  padding-bottom:0!important
+}
+.vertical-space-40{
+  display:block;
+  height:40px;
+  width:100%
+}
+.vertical-space-80{
+  display:block;
+  height:80px;
+  width:100%
+}
+.vertical-space-100{
+  display:block;
+  height:100px;
+  width:100%
+}
+.vertical-space-140{
+  display:block;
+  height:140px;
+  width:100%
+}
+.vertical-space-350{
+  display:block;
+  height:350px;
+  width:100%
+}
+.h-33{
+  height:33%
+}
+.h-50{
+  height:50%
+}
+.w-33{
+  width:33%
+}
+.w-50{
+  width:50%
+}
+.align-top{
+  -ms-flex-item-align:start;
+  align-self:flex-start
+}
+.align-center{
+  -ms-flex-item-align:center;
+  -ms-grid-row-align:center;
+  align-self:center
+}
+.course-container{
+  box-shadow:0 7px 10px 0 rgba(0,0,0,.04),0 20px 20px 0 rgba(0,0,0,.02);
+  border-radius:5px;
+  background:#fff;
+  padding:28px!important;
+  padding:2rem!important
+}
+a.ui.right.large.icon.button.btn-udemy{
+  margin:0;
+  background:#17aa1c;
+  color:#fff
+}
+a.ui.right.large.icon.button.btn-udemy i{
+  background:inherit
+}
+.fresh{
+  color:#3d1c71
+}
+.skinny{
+  font-weight:300
+}
+.gold{
+  color:gold
+}
+.white{
+  color:#fff
+}
+.big{
+  font-size:42px;
+  font-size:3rem
+}
+.bigger{
+  font-size:49px;
+  font-size:3.5rem
+}
+@media only screen and (max-width:767px){
+  [class*="computer only"]:not(.mobile),[class*="large screen only"]:not(.mobile),[class*="mobile hidden"],[class*="or lower hidden"],[class*="tablet only"]:not(.mobile),[class*="widescreen only"]:not(.mobile){
+      display:none!important
+  }
+}
+@media only screen and (min-width:768px) and (max-width:991px){
+  [class*="computer only"]:not(.tablet),[class*="large screen only"]:not(.tablet),[class*="mobile only"]:not(.tablet),[class*="or lower hidden"]:not(.mobile),[class*="tablet hidden"],[class*="widescreen only"]:not(.tablet){
+      display:none!important
+  }
+}
+@media only screen and (min-width:992px) and (max-width:1199px){
+  [class*="computer hidden"],[class*="large screen only"]:not(.computer),[class*="mobile only"]:not(.computer),[class*="or lower hidden"]:not(.tablet):not(.mobile),[class*="tablet only"]:not(.computer),[class*="widescreen only"]:not(.computer){
+      display:none!important
+  }
+}
+@media only screen and (min-width:1200px) and (max-width:1919px){
+  [class*="computer only"]:not([class*="large screen"]),[class*="large screen hidden"],[class*="mobile only"]:not([class*="large screen"]),[class*="or lower hidden"]:not(.computer):not(.tablet):not(.mobile),[class*="tablet only"]:not([class*="large screen"]),[class*="widescreen only"]:not([class*="large screen"]){
+      display:none!important
+  }
+}
+@media only screen and (min-width:1920px){
+  [class*="computer only"]:not([class*=widescreen]),[class*="large screen only"]:not([class*=widescreen]),[class*="mobile only"]:not([class*=widescreen]),[class*="tablet only"]:not([class*=widescreen]),[class*="widescreen hidden"],[class*="widescreen or lower hidden"]{
+      display:none!important
+  }
+}
+#hero{
+  position:relative;
+  height:858px;
+  overflow-x:hidden
+}
+#hero:before{
+  opacity:.8;
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/background_image_4.jpg);
+  z-index:-1;
+}
+#hero:after,#hero:before{
+  content:" ";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:753px
+}
+#hero:after{
+  z-index:-2;
+  background-image:linear-gradient(90deg,#5b6dcf,#8d35a5);
+  box-shadow:0 20px 20px 0 rgba(0,0,0,.18)
+}
+@media only screen and (max-width:767px){
+  #hero{
+      height:1000px;
+      box-shadow:0 20px 20px 0 rgba(0,0,0,.18)
+  }
+  #hero:after,#hero:before{
+      height:100%
+  }
+}
+#header{
+  height:45px;
+  background-color:transparent;
+  border:0;
+  box-shadow:none
+}
+#header #logo{
+  font-size:24px;
+  color:#fff;
+  cursor:pointer
+}
+#header #nav .item{
+  color:#fff;
+  font-size:14px
+}
+#header #nav .item.active,#header #nav .item:hover{
+  text-decoration:underline;
+  background:transparent!important
+}
+#goals{
+  z-index:1
+}
+#goals #prompt{
+  position:relative;
+  color:#fff
+}
+#goals #prompt h1,#goals #prompt h2{
+  font-weight:300
+}
+#goals #prompt h2{
+  margin-top:0
+}
+#goals #prompt h1{
+  font-size:42px;
+  font-size:3rem;
+  margin-bottom:0
+}
+#goals #prompt #mockup{
+  position:absolute;
+  right:-50%;
+  top:-20px;
+  width:100%;
+  height:693px;
+  background-repeat:no-repeat;
+  -ms-background-size:cover;
+  background-size:cover
+}
+@media only screen and (min-width:1920px){
+  #mockup{
+      right:-32.5vw!important
+  }
+}
+@media only screen and (max-width:991px){
+  #mockup{
+      display:none
+  }
+}
+@media only screen and (max-width:767px){
+  #goals #prompt h1{
+      font-size:6vw
+  }
+  #goals #prompt h2{
+      font-size:4vw
+  }
+}
+#cards .card{
+  position:relative;
+  overflow:hidden
+}
+#cards .card svg{
+  position:absolute;
+  text-align:right;
+  opacity:.07;
+  top:5px;
+  right:5px
+}
+#cards .card.active svg,#cards .card:hover svg{
+  opacity:.35
+}
+#cards .card .card-border-bottom{
+  position:absolute;
+  width:100%;
+  height:9px;
+  bottom:0
+}
+#cards .card .content{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-align:center;
+  align-items:center;
+  height:125px
+}
+#cards .card .content .description{
+  line-height:24.5px;
+  line-height:1.75rem
+}
+#cards .card .content .description span{
+  font-size:17.5px;
+  font-size:1.25rem
+}
+#cards .card .content .description span strong{
+  display:block;
+  font-size:21px;
+  font-size:1.5rem;
+  background-color:inherit
+}
+.track-1-color{
+  background-color:#003666;
+  color:#003666
+}
+.track-1-color svg{
+  fill:#003666
+}
+.track-2-color{
+  background-color:#00aeff;
+  color:#00aeff
+}
+.track-2-color svg{
+  fill:#00aeff
+}
+.track-3-color{
+  background-color:#3369e7;
+  color:#3369e7
+}
+.track-3-color svg{
+  fill:#3369e7
+}
+.track-4-color{
+  background-color:#8e43e7;
+  color:#8e43e7
+}
+.track-4-color svg{
+  fill:#8e43e7
+}
+#pathway-timeline{
+  visibility:hidden;
+  position:relative
+}
+#pathway-timeline #start-here,#pathway-timeline #start-here-tab{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-align:center;
+  align-items:center;
+  text-align:center
+}
+#pathway-timeline #start-here-tab h1,#pathway-timeline #start-here-tab h3,#pathway-timeline #start-here h1,#pathway-timeline #start-here h3{
+  font-weight:300;
+  margin:0
+}
+#pathway-timeline #start-here-tab h1,#pathway-timeline #start-here h1{
+  font-size:49px;
+  font-size:3.5rem;
+  -ms-flex-item-align:center;
+  -ms-grid-row-align:center;
+  align-self:center
+}
+#pathway-timeline #start-here-tab .arrow,#pathway-timeline #start-here .arrow{
+  transform:rotate(90deg);
+  margin-left:35px;
+  margin-left:2.5rem;
+  margin-right:35px;
+  margin-right:2.5rem
+}
+#pathway-timeline #start-here-tab svg,#pathway-timeline #start-here svg{
+  padding:0;
+  margin-left:14px;
+  margin-left:1rem
+}
+#pathway-timeline #start-here-tab{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+  -ms-flex-align:center;
+  align-items:center;
+  text-align:center;
+  height:300px
+}
+#pathway-timeline #start-here-tab svg{
+  padding:0;
+  margin-left:0
+}
+#pathway-timeline #start-here-tab .arrow{
+  transform:rotate(0deg)
+}
+#pathway-timeline #qualified{
+  position:relative;
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-align:center;
+  align-items:center
+}
+#pathway-timeline #qualified svg.skilled{
+  margin-left:14px;
+  margin-left:1rem;
+  padding:0
+}
+#pathway-timeline #qualified .arrow{
+  padding:0;
+  transform:rotate(270deg);
+  margin-left:35px;
+  margin-left:2.5rem;
+  margin-right:35px;
+  margin-right:2.5rem
+}
+#pathway-timeline #qualified h1,#pathway-timeline #qualified h2{
+  font-weight:300;
+  margin:0
+}
+#pathway-timeline #qualified h1{
+  font-size:49px;
+  font-size:3.5rem;
+  -ms-flex-item-align:center;
+  -ms-grid-row-align:center;
+  align-self:center
+}
+#pathway-timeline:after{
+  content:" ";
+  position:absolute;
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/sketchbook_cover.png);
+  bottom:-182px;
+  bottom:-13rem;
+  right:0;
+  height:431px;
+  width:613px;
+  background-repeat:no-repeat;
+  z-index:-1
+}
+@media only screen and (max-width:991px){
+  #pathway-timeline:after{
+      bottom:9rem
+  }
+  #qualified{
+      -ms-flex-direction:column;
+      flex-direction:column;
+      -ms-flex-pack:center;
+      justify-content:center;
+      text-align:center
+  }
+  #qualified .skilled{
+      margin-left:0!important
+  }
+  #qualified svg.arrow{
+      transform:rotate(0deg)!important;
+      margin-top:2.5rem;
+      margin-bottom:2.5rem
+  }
+}
+#tracks .track-pathway{
+  display:none
+}
+#tracks #home-stretch{
+  left:31.5px;
+  left:2.25rem
+}
+#tracks .pathway{
+  position:relative;
+  padding:0;
+  left:45.5px;
+  left:3.25rem;
+  border-left:1px dashed #000
+}
+#tracks .pathway .circle.icon{
+  position:absolute;
+  color:#3d1c71;
+  left:-8.54px;
+  left:-.61rem;
+  top:50%
+}
+#tracks .pathway .chevron{
+  position:absolute;
+  color:#000;
+  left:-7px;
+  left:-.5rem;
+  bottom:-9.1px;
+  bottom:-.65rem
+}
+#tracks .pathway .line{
+  position:absolute;
+  top:52%;
+  width:100%;
+  border-bottom:1px dashed #000
+}
+#tracks .course{
+  position:relative;
+  border-radius:5px
+}
+#tracks .course .background{
+  position:absolute;
+  height:100%;
+  width:100%;
+  background-image:linear-gradient(90deg,#0743a8,#1d2371);
+  box-shadow:0 11px 15px 0 rgba(18,17,13,.1);
+  z-index:0;
+  border-radius:inherit
+}
+#tracks .course .image{
+  width:365px!important
+}
+#tracks .course .image img{
+  height:100%
+}
+#tracks .course .middle.aligned.content{
+  padding:14px;
+  padding:1rem;
+  z-index:1
+}
+#tracks .course .middle.aligned.content .description p{
+  color:#fff!important;
+  padding-top:4px
+}
+#tracks .course .middle.aligned.content .description .ui.list{
+  color:#fff!important;
+  margin-top:0
+}
+#tracks .course .middle.aligned.content .description .ui.list i{
+  color:#a7f
+}
+#tracks .course .middle.aligned.content .extra{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-align:center;
+  align-items:center;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+  padding-top:8px
+}
+#tracks .course .middle.aligned.content .extra .button{
+  background:#fff;
+  color:#1d2371;
+  border:1px solid #fff
+}
+#tracks .course .middle.aligned.content .extra .button:hover{
+  background:transparent;
+  color:#fff
+}
+#tracks .course .middle.aligned.content .extra .label{
+  font-size:14px;
+  font-size:1rem;
+  background-color:transparent;
+  color:#fff;
+  padding:0
+}
+#tracks .course .middle.aligned.content .extra .label:hover{
+  text-decoration:underline
+}
+#tracks .ui.grid:nth-child(2n) .course .background{
+  background-image:linear-gradient(90deg,#5f0784,#461794)!important
+}
+#tracks .ui.grid:nth-child(2n) .course .content .description .ui.list i{
+  color:#83adff
+}
+#tracks .ui.grid:nth-child(2n) .course .content .extra .button{
+  color:#461794
+}
+#tracks .ui.grid:nth-child(2n) .course .content .extra .button:hover{
+  color:#fff
+}
+#testimonials{
+  height:660px;
+  position:relative;
+  background-image:linear-gradient(90deg,#471693,#1a2778)
+}
+#testimonials .container{
+  height:100%;
+  display:-ms-flexbox;
+  display:flex
+}
+#testimonials .container .row{
+  padding:0
+}
+#testimonials:before{
+  top:5px;
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/testimonial_pattern_top.png)
+}
+#testimonials:after,#testimonials:before{
+  content:" ";
+  position:absolute;
+  width:100%;
+  height:274px;
+  opacity:.5
+}
+#testimonials:after{
+  bottom:5px;
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/testimonial_pattern_bottom.png)
+}
+@media only screen and (max-width:767px){
+  #testimonials{
+      height:1417px!important
+  }
+  #testimonials .container .h-33{
+      height:0
+  }
+  #testimonials .container .h-33 h1{
+      font-size:8vw
+  }
+  #testimonials .container .h-50 .column{
+      height:20%
+  }
+}
+.star-ratings{
+  position:relative;
+  color:#fff;
+  margin:0 auto;
+  padding:0;
+  width:180px
+}
+.star-ratings .icon{
+  margin:0
+}
+.star-ratings .star-fill{
+  text-align:left;
+  color:gold;
+  padding:0;
+  position:absolute;
+  z-index:1;
+  display:block;
+  top:0;
+  left:0;
+  overflow:hidden;
+  white-space:nowrap
+}
+@keyframes a{
+  50%{
+      color:gold
+  }
+}
+.star-ratings .star-fill .icon{
+  transform:perspective(1px) translateZ(0);
+  box-shadow:0 0 1px transparent;
+  overflow:hidden;
+  transition-duration:1s;
+  transition-property:color;
+  animation-name:a;
+  animation-duration:1s;
+  animation-delay:.5s;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+  color:#ffef99
+}
+.star-ratings .star-unfill{
+  padding:0;
+  display:block;
+  z-index:0;
+  text-shadow:0 0 2px gold,0 0 1em gold,0 0 1em gold
+}
+#reviews{
+  height:380px;
+  display:-ms-flexbox;
+  display:flex;
+  margin-top:-100px
+}
+#reviews .review{
+  margin:0 14px;
+  margin:0 1rem;
+  position:relative;
+  padding:14px 21px;
+  padding:1rem 1.5rem;
+  box-shadow:-1.908px 9.816px 20px 0 rgba(0,0,0,.05);
+  background-color:#fff;
+  z-index:100;
+  height:250px;
+  border:1px solid;
+  border-color:#e7e7e7
+}
+#reviews .review:active,#reviews .review:focus{
+  outline:none
+}
+#reviews .review:before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  height:60px;
+  width:60px;
+  background:inherit;
+  box-shadow:9.816px 1.908px 20px 0 rgba(0,0,0,.05);
+  transform:rotate(45deg);
+  bottom:-30px;
+  left:11px;
+  border-bottom:1px solid;
+  border-right:1px solid;
+  border-color:#e7e7e7
+}
+#reviews .review:after{
+  content:"";
+  z-index:-1;
+  position:absolute;
+  height:100%;
+  width:100%;
+  background:#fff;
+  top:0;
+  left:0
+}
+#reviews .review:not(.slick-active) .content,#reviews .review:not(.slick-active) .reviewer{
+  opacity:.5
+}
+#reviews .review .content{
+  height:100%;
+  width:100%;
+  overflow-y:scroll;
+  font-size:19.599px;
+  font-size:1.4rem
+}
+#reviews .review .reviewer{
+  position:absolute;
+  display:-ms-flexbox;
+  display:flex;
+  bottom:-105px;
+  left:8px
+}
+#reviews .review .reviewer .reviewer-info h3,#reviews .review .reviewer .reviewer-info p{
+  margin:0
+}
+#reviews .review .reviewer .reviewer-info p{
+  font-size:11.2px;
+  font-size:.8rem
+}
+#slideshow-controls{
+  text-align:center
+}
+#slideshow-controls button{
+  margin:0 42px;
+  margin:0 3rem;
+  background:transparent;
+  color:#000;
+  cursor:pointer
+}
+@media only screen and (max-width:767px){
+  #reviews{
+      margin-top:-250px;
+      height:443px;
+      z-index:1
+  }
+  #reviews .review{
+      height:300px;
+      font-size:1.07143rem
+  }
+  #reviews .review .reviewer{
+      left:6px
+  }
+  #reviews .review .reviewer .reviewer-info h3{
+      margin-bottom:.5rem
+  }
+}
+#last-resort{
+  position:relative
+}
+#last-resort .resort-card{
+  border-radius:5px;
+  box-shadow:0 20px 20px 0 rgba(0,0,0,.04)
+}
+#last-resort .resort-card .image{
+  width:50%!important
+}
+#last-resort .resort-card .image img{
+  height:100%
+}
+#last-resort .resort-card .content{
+  position:relative;
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  padding:28px;
+  padding:2rem;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+  background:#fff;
+  border-top-right-radius:inherit;
+  border-bottom-right-radius:inherit;
+  border:1px solid hsla(0,1%,56%,.17);
+  border-left:0
+}
+#last-resort .resort-card .content #first-course-header:hover{
+  color:#3d1c71;
+  text-decoration:underline
+}
+#last-resort .resort-card .content .description .offer h2{
+  display:inline-block
+}
+#last-resort .resort-card .content .description .extra .button{
+  color:#fff;
+  background-image:linear-gradient(90deg,#0743a8,#1d2371)
+}
+@media only screen and (min-width:768px) and (max-width:991px){
+  #last-resort .resort-card .content{
+      padding:1rem;
+      font-size:80%
+  }
+  #last-resort .resort-card .content .divider{
+      margin:.5rem
+  }
+  #last-resort .resort-card .content .description,#last-resort .resort-card .content .extra{
+      margin:0
+  }
+}
+@media only screen and (max-width:767px){
+  #last-resort .container div h1.big{
+      font-size:6vw
+  }
+  #last-resort .resort-card .image,#last-resort .resort-card .image img{
+      width:100%!important
+  }
+  #last-resort .resort-card .content{
+      border-top-right-radius:0;
+      border-top-left-radius:0;
+      border-bottom-left-radius:inherit
+  }
+  #last-resort .resort-card .content .extra .button{
+      width:100%
+  }
+}
+#footer{
+  position:relative;
+  /* background:#f5f5f5; */
+  z-index:-1
+}
+#footer .container{
+  margin-top:-45px;
+  height:145px;
+  padding-bottom:28px;
+  padding-bottom:2rem;
+  -ms-flex-align:end;
+  align-items:flex-end;
+  background:transparent
+}
+#footer .container.menu{
+  border:0;
+  box-shadow:none;
+  margin-bottom:0
+}
+#footer .container.menu .item{
+  color:#3d1c71
+}
+#footer .container.menu .item.active:not(div),#footer .container.menu .item:hover:not(div){
+  background:transparent;
+  text-decoration:underline
+}
+@media screen and (max-width:767px){
+  #footer .container{
+      height:480px;
+      margin-top:-220px!important;
+      -ms-flex-direction:column;
+      flex-direction:column;
+      -ms-flex-pack:end;
+      justify-content:flex-end;
+      -ms-flex-align:center;
+      align-items:center
+  }
+  #footer .container.menu div.item{
+      padding-top:2rem
+  }
+}
+#background-mid-left{
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/background_artwork_mid_left.png);
+  position:absolute;
+  top:-10px;
+  left:-35px;
+  width:669px;
+  height:1134px;
+  z-index:-2;
+  background-repeat:no-repeat
+}
+#background-mid-right{
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/background_artwork_mid_right.png);
+  top:142px;
+  width:378px;
+  height:1153px
+}
+#background-bottom-right,#background-mid-right{
+  position:absolute;
+  right:0;
+  z-index:-2;
+  background-repeat:no-repeat
+}
+#background-bottom-right{
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/background_artwork_bottom_right.png);
+  opacity:.5;
+  bottom:-50px;
+  width:1661px;
+  height:604px
+}
+@media only screen and (max-width:991px){
+  #background-mid-right{
+      top:300px
+  }
+}
+@media only screen and (max-width:767px){
+  #background-mid-left{
+      top:300px;
+      left:-350px
+  }
+  #background-mid-right{
+      display:none
+  }
+}
+#pathway-timeline-sm{
+  visibility:hidden;
+  position:relative
+}
+#pathway-timeline-sm #start-here-sm{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  -ms-flex-pack:distribute;
+  justify-content:space-around;
+  -ms-flex-align:center;
+  align-items:center;
+  text-align:center;
+  height:400px
+}
+#pathway-timeline-sm #start-here-sm h1,#pathway-timeline-sm #start-here-sm h3{
+  font-weight:300;
+  margin:0
+}
+#pathway-timeline-sm #start-here-sm svg{
+  padding:0
+}
+#pathway-timeline-sm #start-here-sm .fresh{
+  font-size:49px;
+  font-size:3.5rem;
+  -ms-flex-item-align:center;
+  -ms-grid-row-align:center;
+  align-self:center;
+  color:#3d1c71
+}
+#pathway-timeline-sm #start-here-sm .arrow{
+  padding:0
+}
+#pathway-timeline-sm #qualified{
+  position:relative;
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-align:center;
+  align-items:center
+}
+#pathway-timeline-sm #qualified svg{
+  padding:0
+}
+#pathway-timeline-sm #qualified .arrow{
+  margin-top:35px;
+  margin-top:2.5rem;
+  margin-bottom:35px;
+  margin-bottom:2.5rem
+}
+#pathway-timeline-sm #qualified h1,#pathway-timeline-sm #qualified h2{
+  font-weight:300;
+  margin:0
+}
+#pathway-timeline-sm #qualified h1 .icon,#pathway-timeline-sm #qualified h2 .icon{
+  color:#8e43e7
+}
+#pathway-timeline-sm #qualified h2{
+  font-size:4vw
+}
+#pathway-timeline-sm #qualified h1{
+  font-size:8vw;
+  -ms-flex-item-align:center;
+  -ms-grid-row-align:center;
+  align-self:center
+}
+#pathway-timeline-sm:after{
+  content:" ";
+  position:absolute;
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/sketchbook_cover.png);
+  bottom:-70px;
+  bottom:-5rem;
+  right:0;
+  height:431px;
+  width:613px;
+  background-repeat:no-repeat;
+  z-index:-1;
+  opacity:.4
+}
+#tracks-sm .course{
+  position:relative;
+  border-radius:5px
+}
+#tracks-sm .course .background{
+  position:absolute;
+  height:100%;
+  width:100%;
+  background:linear-gradient(90deg,#0743a8,#1d2371);
+  box-shadow:0 11px 15px 0 rgba(18,17,13,.1);
+  z-index:0;
+  border-radius:inherit
+}
+#tracks-sm .course .image,#tracks-sm .course .image img{
+  width:100%!important
+}
+#tracks-sm .course .middle.aligned.content{
+  padding:28px;
+  padding:2rem;
+  z-index:1
+}
+#tracks-sm .course .middle.aligned.content .description p{
+  color:#fff!important;
+  padding-top:4px
+}
+#tracks-sm .course .middle.aligned.content .description .ui.list{
+  color:#fff!important;
+  margin-top:0
+}
+#tracks-sm .course .middle.aligned.content .description .ui.list i{
+  color:#a7f
+}
+#tracks-sm .course .middle.aligned.content .extra{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  -ms-flex-align:center;
+  align-items:center;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+  padding-top:8px
+}
+#tracks-sm .course .middle.aligned.content .extra .button{
+  background:#fff;
+  color:#1d2371;
+  border:1px solid #fff
+}
+#tracks-sm .course .middle.aligned.content .extra .button:hover{
+  background:transparent;
+  color:#fff
+}
+#tracks-sm .course .middle.aligned.content .extra .label{
+  padding:7px 0;
+  padding:.5rem 0;
+  font-size:14px;
+  font-size:1rem;
+  background-color:transparent;
+  color:#fff
+}
+#tracks-sm .course .middle.aligned.content .extra .label:hover{
+  text-decoration:underline
+}
+#tracks-sm .ui.grid:nth-child(2n) .course .background{
+  background:linear-gradient(90deg,#5f0784,#461794)!important
+}
+#tracks-sm .ui.grid:nth-child(2n) .course .content .description .ui.list i{
+  color:#83adff
+}
+#tracks-sm .ui.grid:nth-child(2n) .course .content .extra .button{
+  color:#461794
+}
+#tracks-sm .ui.grid:nth-child(2n) .course .content .extra .button:hover{
+  color:#fff
+}
+body{
+  background:#fdfdfd
+}

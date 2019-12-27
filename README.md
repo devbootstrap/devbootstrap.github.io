@@ -1,5 +1,5 @@
-# Rallyconding
-Rallyconding create by jekyll 
+# Jekyll site
+Jekyll site create by jekyll
 ## How to run website
 Run on terminal
 
@@ -11,4 +11,3 @@ Run on browser
 ```
 http://localhost:4000
 ```
-

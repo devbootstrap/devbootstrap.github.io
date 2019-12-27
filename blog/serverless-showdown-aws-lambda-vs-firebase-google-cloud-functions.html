@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="If 2016 was the year of microservices, 2017 is shaping up to be the year of serverless computing, most notably through AWS Lambda and Google Cloud Functions created through Firebase.">
-    <meta property="og:url" content="https://www.rallycoding.com/blog/serverless-showdown-aws-lambda-vs-firebase-google-cloud-functions/" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Serverless Showdown: AWS Lambda vs Firebase Google Cloud Functions" />
-    <meta property="og:description" content="If 2016 was the year of microservices, 2017 is shaping up to be the year of serverless computing, most notably through AWS Lambda and Google Cloud Functions created through Firebase." />
-    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
-    <meta property="og:image:width" content="1792" />
-    <meta property="og:image:height" content="963" />
+<title>Jekyll Site</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
 
-
-
-    <title>RallyCoding: Serverless Showdown: AWS Lambda vs Firebase Google Cloud Functions</title>
-    <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
 </head>
-
-<body>
-  <section id="hero">
-    <div class="ui container">
-      <div id="header" class="ui borderless menu">
-        <div class="header item">
-          <h4 id="logo" onclick="document.location.href='/'">
-            RallyCoding
-          </h4>
-        </div>
-        <div id="nav" class="right menu">
-          <a class="item nav-courses " href="/courses">Courses</a>
-          <a class="item nav-blog " href="/blog">Blog</a>
-          <a class="item nav-videos " href="/videos">Videos</a>
-        </div>
+<body class="">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light p-5">
+    <div class="container">
+      <a class="navbar-brand text-white" href="/"><h3>Devbootstrap</h3></a>
+      <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses"><h6>Courses</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog"><h6>Blog</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true"><h6>Video</h6></a>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <section id="post" class="ui container">
+  <div class="container mt-4">
     <h2 id="serverlessshowdownawslambdavsfirebasegooglecloudfunctions-1">Serverless Showdown: AWS Lambda vs Firebase Google Cloud Functions</h2>
     <p>If 2016 was the year of microservices, 2017 is shaping up to be the year of serverless computing, most notably through AWS Lambda and Google Cloud Functions <em>created through Firebase</em>.</p>
 
@@ -49,7 +41,7 @@
 
     <p>Ah, the requisite explanation.</p>
 
-    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%201-min.png" alt="" />**</p>
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%201-min.png" alt="" style="width: 50%;"/>**</p>
 
     <p>Traditional backends have been created using <strong>monolithic servers</strong>, where a single server may have several different responsibilities under a single codebase. Request comes in, server executes some processing, response comes out. The same server might be responsible for authentication, handling file uploads, and keeping track of user profiles. The key mechanic is that if two different requests come in for two different resources, it gets handled by a single codebase. This server might run on dedicated or virtualized machinery (or several machines!), and persistently runs over the span of days, weeks, or months.</p>
 
@@ -57,7 +49,7 @@
 
     <p>Finally, <strong>serverless architectures</strong>. Think of them as a natural evolution or extension to microservices.</p>
 
-    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%202-min.png" alt="" />**</p>
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%202-min.png" alt="" style="width: 50%;"/>**</p>
 
     <p>This is a microservice architecture driven to the extreme. A single chunk of code, or ‘function’ is executed anytime a distinct event occurs. This event might be a user requesting to login, or a user attempting to upload a file. These functions are traditionally very short running in nature — the function ‘wakes up’, executes some amount of with a duration of 10 milliseconds to 10 seconds, and is then terminated automatically by the service provider. No persistence, no dedicated machinery — in effect, you have no idea where your code is running at any given time. The benefit to serverless architectures shares some of the benefits of a microservices based approach, where each function has some distinct responsibility and logical separation.</p>
 
@@ -65,7 +57,7 @@
 
     <p>To compare the two services, I wrote a small React Native application with the intent of providing one-time-password authentication.</p>
 
-    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%203-min.png" alt="" />**</p>
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%203-min.png" alt="" style="width: 50%;"/>**</p>
 
     <p>Rather than expecting a user to enter a tedious email and password combination, the user is expected to enter just their phone number. Once we have their phone number in hand, we generate a short six-digit token then text it to the user via SMS. The user then enters the code into our app, after which we expect them to enter the code back into our app. If they enter the correct code, great, they are now authenticated.</p>
 
@@ -99,7 +91,7 @@
 
     <p>Here’s the relevant snippet of config from the YML file for creating a new user:</p>
 
-    <pre>
+    <pre class="bg-secondary">
       <code>
         functions:
           userCreate:
@@ -116,8 +108,8 @@
 
     <p>I found writing the actual function to require a little more boilerplate than I’d like:</p>
 
-    <pre>
-      <code class="language-javascript">const firebase = require('./firebase');
+    <pre class="bg-secondary">
+      <code>const firebase = require('./firebase');
         const helpers = require('./helpers');
         const handleError = helpers.handleError;
         const handleSuccess = helpers.handleSuccess;
@@ -141,8 +133,8 @@
     </pre>
     <p>You will notice a reference to firebase in here; I am still using Firebase for user management, even though the app is hosted on AWS infrastructure.</p>
     <p>Yep, the request body has to be manually parsed. You’ll also notice that I made some ‘handleSuccess’ and ‘handleError’ helpers, to avoid some otherwise awful boilerplate. Here’s ‘handleSuccess’:</p>
-    <pre>
-      <code class="language-javascript">handleSuccess(context, data) {
+    <pre class="bg-secondary">
+      <code >handleSuccess(context, data) {
         context.succeed({
           "statusCode": 200,
             "headers": { "Content-Type": "application/json" },
@@ -157,14 +149,14 @@
     <p>Project creation with Cloud Functions was clearly easier. Its clear that the managers around this project assume that the most common use case is handling incoming HTTP requests, so there wasn’t a tremendous amount of configuration to route a particular event to a particular function.</p>
     <p>Generation of the initial project was done by using the firebase CLI, which I hadn’t been previously familiar with. The CLI generates an entire Firebase project, which allows hosting important configuration like your security rules in a VCS, rather than relying entirely upon the console rule editor.</p>
     <p>Definition of the functions took place inside of a Javascript file, where each export is essentially assumed to be a deployable function. For example:</p>
-    <pre>
-      <code class="language-javascript">
+    <pre class="bg-secondary">
+      <code >
         exports.createUser = functions.https.onRequest(createUser);
       </code>
     </pre>
     <p>The actual function creation was far more straightforward.</p>
-    <pre>
-      <code class="language-javascript">const admin = require('firebase-admin');
+    <pre class="bg-secondary">
+      <code >const admin = require('firebase-admin');
         module.exports = function(req, res) {
           if (!req.body.phone) {
             return res.status(422).send({ error: 'Bad Input' });
@@ -205,11 +197,11 @@
 
     <p>Once your function has been deployed, you can create a ‘test’ event, by manually creating a request to be sent directly to your function. In this case, I wanted to manually test the creation of a new user by providing a unique phone number. Using one of the sample templates, I manipulated the body of the request to include a phone number, then saved the test event.</p>
 
-    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%203-min.png" alt="" />**</p>
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%203-min.png" alt="" style="width: 50%;"/>**</p>
 
     <p>Once your test event is created, that beautiful blue <em>Test *button will execute your function *instantaneously</em> and immediately show output from the execution in plain text, including not only the function’s request response, but also any log output coming from the function.</p>
 
-    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%205-min.png" alt="" />**</p>
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%205-min.png" alt="" style="width: 50%;"/>**</p>
 
     <h2 id="testinggooglecloudfunctions">Testing — Google Cloud Functions</h2>
 
@@ -228,7 +220,7 @@
 
     <p>If you <em>do</em> want to get information out, you’ll be using Firebase’s Function console.</p>
 
-    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%206.png" alt="" />**</p>
+    <p><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382388/lambda%20vs%20gcf%20-%206.png" alt="" style="width: 50%;"/>**</p>
 
     <p>At the console, you’re limited to seeing only logged information, as opposed to AWS’s console which shows both log statements and function response bodies.</p>
 
@@ -248,7 +240,7 @@
 
     <p>For example, a function that takes 100ms to execute on a 256mb memory machine with a 400mhz cpu would cost the following on Google :</p>
 
-    <pre>
+    <pre class="bg-secondary">
       <code>  (256mb/1024(gb/mb)) * .5s * $0.0000025 gb-s
         + (400mhz / 1000 ghz/mhz) * .5s * $0.0000100 gb-s
         = $0.0000003125 + $0.000002
@@ -260,7 +252,7 @@
 
     <p>On AWS Lambda, a similar setup would cost</p>
 
-    <pre>
+    <pre class="bg-secondary">
       <code>(256mb/1024(gb/mb) * .5s * $0.000000417 gb-s
     = $0.0000000521
     </code>
@@ -275,36 +267,35 @@
     <p>At this point, AWS Lambda is head and shoulders above Google Cloud Functions. The testing cycle feels much tighter, and the pricing is currently no-contest. Function creation is a bit easier with Google Cloud, but as soon as you get that boilerplate down you’re good to go.</p>
 
     <p>Officially, Google Cloud Functions are still in beta, so we might see price reductions at some point in time, or better tooling, but for now I can’t help but point friends over to AWS Lambda.</p>
-    </div>
 
     <div id="post-controls">
-      <a href="/blog/how-to-fix-error-listen-eaddrinuse-and-error-listen-eacces.html" class="ui right labeled right floated icon button">
-        <i class="right arrow icon"></i>
+      <a class = "btn bg-primary" href="/blog/how-to-fix-error-listen-eaddrinuse-and-error-listen-eacces.html" class="ui right labeled right floated icon button">
         Next Post
       </a>
     </div>
-    <div class="vertical-space-80"></div>
-  </section>
-  <div id="disqus_thread" class="ui container"></div>
-  <script src="../assets/js/prism.44ed291397f3.js"></script>
-  <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    var disqus_config = function() {
-      this.page.url = 'https://www.rallycoding.com/blog/serverless-showdown-aws-lambda-vs-firebase-google-cloud-functions.html';
-      this.page.identifier = 'rallycoding-post-2';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://rallycoding.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  <br><br>
+  <!-- footer -->
+  <nav class="navbar navbar-expand-lg navbar-light p-4">
+    <div class="container mt-1">
+      <p class="text-white mt-1">Rotati@2019 devbootstrap</p>
+      <div class="collapse navbar-collapse" id=""></div>
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true">Video</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
 </html>

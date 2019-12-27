@@ -1,0 +1,26 @@
+
+.footer{
+  background-color: rgb(238, 235, 229);
+}
+.navbar {
+  background-image:url(https://s3-us-west-2.amazonaws.com/rallycodingsite/site/background_image_4.jpg);
+}
+.color-title-video{
+  color: rgb(85, 30, 139);
+}
+.color-title-blog{
+  color: rgb(85, 30, 139);
+}
+.color-title-courses{
+  color: rgb(85, 30, 139);
+}
+#footer {
+  height: 100px;
+  padding: 30px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin-bottom: 0px;
+  padding-top: 40px;
+
+}

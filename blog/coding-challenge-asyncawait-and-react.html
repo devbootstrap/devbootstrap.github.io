@@ -1,56 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Learn how to use async/await to make your code more readable with these interactive coding challenges.">
-    <meta property="og:url" content="https://www.rallycoding.com/blog/coding-challenge-asyncawait-and-react/" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Coding Challenge: Async/Await and React" />
-    <meta property="og:description" content="Learn how to use async/await to make your code more readable with these interactive coding challenges." />
-    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
-    <meta property="og:image:width" content="1792" />
-    <meta property="og:image:height" content="963" />
+<title>Jekyll Site</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
 
-    <title>RallyCoding: Coding Challenge: Async/Await and React</title>
-    <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
-
-  </head>
 </head>
-<body>
-  <section id="hero">
-    <div class="ui container">
-      <div id="header" class="ui borderless menu">
-        <div class="header item">
-          <h4 id="logo" onclick="document.location.href='/'">
-            RallyCoding
-          </h4>
-        </div>
-        <div id="nav" class="right menu">
-          <a class="item nav-courses " href="/courses">Courses</a>
-          <a class="item nav-blog " href="/blog">Blog</a>
-          <a class="item nav-videos " href="/videos">Videos</a>
-        </div>
+<body class="">
+  <nav class="navbar navbar-expand-lg navbar-light p-5">
+    <div class="container">
+      <a class="navbar-brand text-white" href="/"><h3>Devbootstrap</h3></a>
+      <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses"><h6>Courses</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog"><h6>Blog</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true"><h6>Video</h6></a>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
-
-  <section id="post" class="ui container">
-    <style>
-      pre {
-        width: 80%;
-        margin-left: 10% !important;
-      }
-
-      .pen-wrapper {
-        padding: 0 3%;
-      }
-    </style>
-    <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+    </nav>
+  <div class="container mt-4">
     <h1>Coding Challenge: Async/Await and React</h1>
     <p style="color: grey;"><em>by Alec Barlow</em></p>
     <p>Disclaimer: This article assumes the reader has some understanding of JavaScript, Promises, and React.</p>
@@ -60,42 +39,42 @@
     </div>
     <h2>Blocking vs. Non-Blocking Code</h2>
     <p>Let compare two snippets of code, one in Python, the other in JavaScript. Both blocks will output the same thing (sort of).</p>
-    <pre>
-    <code class="language-python">
-      # Python 3 (Blocking)
+    <pre class="bg-secondary">
+      <code class="">
+        # Python 3 (Blocking)
 
-      import requests
+        import requests
 
-      def getUsers():
-        response = requests.get('https://jsonplaceholder.typicode.com/users')
-        fetchedUsers = response.json()
-        return fetchedUsers
+        def getUsers():
+          response = requests.get('https://jsonplaceholder.typicode.com/users')
+          fetchedUsers = response.json()
+          return fetchedUsers
 
-      users = getUsers()
-      print(users) # prints [{'id': 1, 'name': 'Leanne Graham'...}]
-    </code>
-  </pre>
-    <pre>
-    <code class="language-javascript">
-      // JavaScript (Non-Blocking)
+        users = getUsers()
+        print(users) # prints [{'id': 1, 'name': 'Leanne Graham'...}]
+      </code>
+    </pre>
+    <pre class="bg-secondary">
+      <code class="language-javascript">
+        // JavaScript (Non-Blocking)
 
-      const getUsers = () => {
-        return fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
-      }
+        const getUsers = () => {
+          return fetch('https://jsonplaceholder.typicode.com/users')
+          .then(response => response.json())
+        }
 
-      let users;
-      getUsers()
-      .then(fetchedUsers => {
-        users = fetchedUsers;
-        console.log(users); // logs [{'id': 1, 'name': 'Leanne Graham'...}]
-      });
-      console.log(users);
-      // users is undefined...
-      // Can we even assign the data from the request to it?
-      // Sounds like the beginnings of 'callback hell'.
-    </code>
-  </pre>
+        let users;
+        getUsers()
+        .then(fetchedUsers => {
+          users = fetchedUsers;
+          console.log(users); // logs [{'id': 1, 'name': 'Leanne Graham'...}]
+        });
+        console.log(users);
+        // users is undefined...
+        // Can we even assign the data from the request to it?
+        // Sounds like the beginnings of 'callback hell'.
+      </code>
+    </pre>
     <p>
       Do I need to ask which snippet is easier to read and follow along?
     </p>
@@ -107,14 +86,14 @@
 
     <h2>Example #1: The basics</h2>
     <p>Starting on line 9, you will notice that this component currently uses <code>Promise</code> based syntax to obtain user data. Switching to async/await syntax will make the logic in <code>componentWillMount</code> much easier to understand. To do that, comment out lines 9-14 and add this:
-      <pre>
-    <code class="language-jsx">
-     async componentDidMount() {
-       let response = await api.users.get();
-       this.setState({users: response.data, apiError: null});
-     }
-    </code>
-  </pre>
+    <pre class="bg-secondary">
+      <code class="">
+        async componentDidMount() {
+          let response = await api.users.get();
+          this.setState({users: response.data, apiError: null});
+        }
+      </code>
+    </pre>
     </p>
     <div class="pen-wrapper">
       <p data-height="600" data-theme-id="dark" data-slug-hash="MojWNV" data-default-tab="js,result" data-user="abarlow85" data-embed-version="2" data-pen-title="a/a ex 1" data-editable="true" class="codepen">See the Pen <a href="https://codepen.io/abarlow85/pen/MojWNV/">a/a ex 1</a> by Alec Barlow (<a href="https://codepen.io/abarlow85">@abarlow85</a>) on <a href="https://codepen.io">CodePen</a>.</p>
@@ -130,8 +109,8 @@
     </p>
     <h2>Example #2: Handling errors</h2>
     <p>Handling errors is also straight forward. Simply put, instead of <code>.then</code> and <code>.catch</code> blocks of code, which is used in <code>Promise</code> based syntax, a try/catch block is used. Using the following template, comment out the <code>componentDidMount</code> method in the Pen below and write it again using async/await. The only lines that you need to worry about are 9-17.
-      <pre>
-        <code class="language-jsx">
+      <pre class="bg-secondary">
+        <code class="">
           // solution template
           async componentDidMount() {
             try {
@@ -156,8 +135,8 @@
     <p>
       How did it go? Here is the answer that I came up with.
     </p>
-    <pre>
-      <code class="language-jsx">
+    <pre class="bg-secondary">
+      <code class="">
         async componentDidMount() {
           let response, error;
           try {
@@ -200,8 +179,8 @@
     <p>
       Hopefully, I didn't lose you. Here is my solution:
     </p>
-    <pre>
-      <code class="language-jsx">
+    <pre class="bg-secondary">
+      <code class="">
       async componentDidMount() {
         let response, error, users;
         try {
@@ -244,40 +223,35 @@
       By now, you might be noticing a pattern when converting between <code>Promise</code> based syntax and async/await. Async/await is a wrapper around Promises, with the added benefits of having more control over your code flow, and, most importantly, having code that can be read synchronously to the human eye.
     </p>
     <p>Start using async/await now, and enjoy not having to worry about Promise chaining and "callback hell" anymore!</p>
-    <div id="post-controls">
-      <a href="/blog/the-buttons-arent-alright.html" class="ui labeled left floated icon button">
-        <i class="left arrow icon"></i>
-        Previous Post
-      </a>
-      <a href="/blog/authorization-with-express.html" class="ui right labeled right floated icon button">
-        <i class="right arrow icon"></i>
-        Next Post
-      </a>
+    <a class = "btn bg-primary" href="/blog/coding-challenge-asyncawait-and-react.html" class="ui labeled left floated icon button">
+      Previous Post
+    </a>
+    <a class = "btn bg-primary" href="/blog/mlab-development-with-a-database-as-a-service.html" class="ui right labeled right floated icon button">
+      Next Post
+    </a>
+  </div>
+  <br><br>
+  <!-- footer -->
+  <nav class="navbar navbar-expand-lg navbar-light p-4">
+    <div class="container mt-1">
+      <p class="text-white mt-1">Rotati@2019 devbootstrap</p>
+      <div class="collapse navbar-collapse" id=""></div>
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true">Video</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="vertical-space-80"></div>
-  </section>
-
-  <div id="disqus_thread" class="ui container"></div>
-  <script src="../assets/js/prism.44ed291397f3.js"></script>
-
-  <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    var disqus_config = function() {
-      this.page.url = 'https://www.rallycoding.com/blog/coding-challenge-asyncawait-and-react.html';
-      this.page.identifier = 'rallycoding-post-7';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://rallycoding.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
 </html>

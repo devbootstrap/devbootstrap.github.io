@@ -1,663 +1,169 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Master the newest Javascript development technologies like React and Redux with Stephen Grider's courses">
-  <meta property="og:url" content="https://www.rallycoding.com/courses/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Course Directory | RallyCoding" />
-  <meta property="og:description" content="Master the newest Javascript development technologies like React and Redux with Stephen Grider's courses" />
-  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
-  <meta property="og:image:width" content="1792" />
-  <meta property="og:image:height" content="963" />
-
-
-
-  <title>Course Directory | RallyCoding</title>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
-  <link rel="stylesheet" type="text/css" href="../assets/css/directory.46207fb228bd.css">
-  <link rel="stylesheet" type="text/css" href="../assets/css/slick.13b1b6672b8c.css">
+<title>Jekyll Site</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
 
 </head>
-
-<body>
-  <div id="background-mid-left"></div>
-  <div id="background-mid-right"></div>
-  <section id="hero">
-    <div class="ui container">
-      <div id="header" class="ui borderless menu">
-        <div class="header item">
-          <h4 id="logo" onclick="document.location.href='/'">
-            RallyCoding
-          </h4>
-        </div>
-        <div id="nav" class="right menu">
-          <a class="item nav-courses active" href="/courses">Courses</a>
-          <a class="item nav-blog " href="/blog">Blog</a>
-          <a class="item nav-videos " href="/videos">Videos</a>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-  <section id="search">
-    <div class="ui container grid">
-      <div class="one column row">
-        <div class="column">
-          <h1>Course Directory</h1>
-        </div>
+<body class="">
+  <nav class="navbar navbar-expand-lg navbar-light p-5">
+    <div class="container">
+      <a class="navbar-brand text-white" href="/"><h3>Devbootstrap</h3></a>
+      <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses"><h6>Courses</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog"><h6>Blog</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true"><h6>Video</h6></a>
+          </li>
+        </ul>
       </div>
     </div>
+  </nav>
+  <div class="container-fluld shadow-lg p-5 ">
+    <div class="container">
+      <h1 class=" color-title-courses">Courses Directory</h1>
+    </div>
+  </div>
 
-  </section>
-
-  <div class="vertical-space-80"></div>
-
-  <section id="courses">
-
-    <div class="ui container">
-      <div class="ui three doubling stackable cards">
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/modern_react_base.png" alt="Modern React with Redux">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-4 mt-4">
+        <div class="card shadow-lg">
+          <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/modern_react_base.png" alt="Modern React with Redux" style="width: 100%;height: auto;border-radius: inherit;">
+          <div class="card-body">
+            <h4>Modern React with Redux</h4>
+            <p>Master the fundamentals of React and Redux with this tutorial as you develop apps supported by NPM, Webpack, and ES6</p>
           </div>
-          <div class="content">
-            <div class="header">Modern React with Redux</div>
-            <div class="description">
-              Master the fundamentals of React and Redux with this tutorial as you develop apps supported by NPM, Webpack, and ES6
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/modern-react-with-redux.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
+          <br>
+          <div class="card-footer">
+              <a class="btn  bg-success text-white  btn-block " href="/courses/modern-react-with-redux.html" target="_parent"  >
+                <span class="mr-5 ">More Information</span>
+                <i class="fa fa-arrow-right ml-5" aria-hidden=""></i>
+              </a>
           </div>
         </div>
+      </div>
 
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/react_native_base.png" alt="The Complete React Native and Redux Course">
+      <div class="col-sm-4 mt-4">
+        <div class="card shadow-lg">
+          <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/react_native_base.png" alt="The Complete React Native and Redux Course" style="width: 100%;height: auto;border-radius: inherit;">
+          <div class="card-body">
+            <h4>The Complete React Native and Redux Course</h4>
+            <p>iOS and Android App Development from scratch - build fully native mobile apps ridiculously fast!/p>
           </div>
-          <div class="content">
-            <div class="header">The Complete React Native and Redux Course</div>
-            <div class="description">
-              iOS and Android App Development from scratch - build fully native mobile apps ridiculously fast!
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/the-complete-react-native-and-redux-course.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
+          <div class="card-footer">
+              <a class="btn btn-block bg-success text-white" href="/courses/the-complete-react-native-and-redux-course.html" target="_parent" class="ui right labeled large icon button btn-udemy">
+                <span class="mr-5 ">More Information</span>
+                <i class="fa fa-arrow-right ml-5" aria-hidden=""></i>
+              </a>
           </div>
         </div>
+      </div>
 
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/adv_react_base.png" alt="Advanced React and Redux">
+      <div class="col-sm-4 mt-4">
+        <div class="card shadow-lg">
+          <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/adv_react_base.png" alt="Advanced React and Redux" style="width: 100%;height: auto;border-radius: inherit;">
+          <div class="card-body">
+            <h4>Advanced React and Redux</h4>
+            <p>Detailed walkthroughs on advanced React and Redux concepts - Authentication, Testing, Middlewares, HOC&#39;s, and Deployment</p>
           </div>
-          <div class="content">
-            <div class="header">Advanced React and Redux</div>
-            <div class="description">
-              Detailed walkthroughs on advanced React and Redux concepts - Authentication, Testing, Middlewares, HOC&#39;s, and Deployment
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/advanced-react-and-redux.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
+          <br>
+          <div class="card-footer">
+              <a class="btn btn-block bg-success text-white" href="/courses/advanced-react-and-redux.html" target="_parent" class="ui right labeled large icon button btn-udemy">
+                <span class="mr-5 ">More Information</span>
+                <i class="fa fa-arrow-right ml-5" aria-hidden=""></i>
+              </a>
           </div>
         </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/node_with_react.jpg" alt="Node with React: Fullstack Web Development">
-          </div>
-          <div class="content">
-            <div class="header">Node with React: Fullstack Web Development</div>
-            <div class="description">
-              Build and deploy fullstack web apps with NodeJS, React, Redux, Express, and MongoDB.
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/node-with-react-fullstack-web-development.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mongoDB_base.png" alt="The Complete Developers Guide to MongoDB">
-          </div>
-          <div class="content">
-            <div class="header">The Complete Developers Guide to MongoDB</div>
-            <div class="description">
-              Master MongoDB and Mongoose design with a test-driven approach
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/the-complete-developers-guide-to-mongodb.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card-ethereum.jpg" alt="Ethereum and Solidity: The Complete Developer&#39;s Guide">
-          </div>
-          <div class="content">
-            <div class="header">Ethereum and Solidity: The Complete Developer&#39;s Guide</div>
-            <div class="description">
-              Use Ethereum, Solidity, and Smart Contracts to build production-ready apps based on the blockchain.
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/ethereum-and-solidity-the-complete-developers-guide.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card-bootcamp.jpg" alt="The Coding Interview Bootcamp: Algorithms + Data Structures">
-          </div>
-          <div class="content">
-            <div class="header">The Coding Interview Bootcamp: Algorithms + Data Structures</div>
-            <div class="description">
-              Ace your next Javascript coding interview by mastering data structures and algorithms.
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/the-coding-interview-bootcamp-algorithms--data-structures.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/es6_base.png" alt="ES6 Javascript: The Complete Developer&#39;s Guide">
-          </div>
-          <div class="content">
-            <div class="header">ES6 Javascript: The Complete Developer&#39;s Guide</div>
-            <div class="description">
-              ES6 Javascript Development from scratch. Get practice with live examples and learn exactly where to apply ES6 features.
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/es6-javascript-the-complete-developers-guide.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/adv_react_native_base.png" alt="React Native: Advanced Concepts">
-          </div>
-          <div class="content">
-            <div class="header">React Native: Advanced Concepts</div>
-            <div class="description">
-              Master the advanced topics of React Native: Animations, Maps, Notifications, Navigation and More!
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/react-native-advanced-concepts.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/graphql_base.png" alt="GraphQL with React: The Complete Developers Guide">
-          </div>
-          <div class="content">
-            <div class="header">GraphQL with React: The Complete Developers Guide</div>
-            <div class="description">
-              Learn and master GraphQL by building real web apps with React and Node.
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/graphql-with-react-the-complete-developers-guide.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/go.jpg" alt="Go: The Complete Developer&#39;s Guide">
-          </div>
-          <div class="content">
-            <div class="header">Go: The Complete Developer&#39;s Guide</div>
-            <div class="description">
-              Master the fundamentals and advanced features of the Go Programming Language
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/go-the-complete-developers-guide" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/webpack2_base.png" alt="Webpack 2: The Complete Developer&#39;s Guide">
-          </div>
-          <div class="content">
-            <div class="header">Webpack 2: The Complete Developer&#39;s Guide</div>
-            <div class="description">
-              Master Webpack 2 as you deploy web apps supported by Babel, code splitting, and ES2015 Modules.
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/webpack-2-the-complete-developers-guide.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card-advanced-node.jpg" alt="Node JS: Advanced Concepts">
-          </div>
-          <div class="content">
-            <div class="header">Node JS: Advanced Concepts</div>
-            <div class="description">
-              Get advanced with Node.Js! Learn caching with Redis, speed up through clustering, and add image upload with S3 and Node!
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/node-js-advanced-concepts.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/elixir_phoenix_base.png" alt="The Complete Elixir and Phoenix Bootcamp">
-          </div>
-          <div class="content">
-            <div class="header">The Complete Elixir and Phoenix Bootcamp</div>
-            <div class="description">
-              Master Functional Programming techniques while learning to build compelling web applications!
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/the-complete-elixir-and-phoenix-bootcamp.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card-server-side-fixed.jpg" alt="Server Side Rendering with React and Redux">
-          </div>
-          <div class="content">
-            <div class="header">Server Side Rendering with React and Redux</div>
-            <div class="description">
-              Build React, Redux, and React Router apps using Server Side Rendering (SSR), Isomorphic, and Universal JS techniques
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/server-side-rendering-with-react-and-redux.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card-docker.jpg" alt="Docker and Kubernetes: The Complete Guide">
-          </div>
-          <div class="content">
-            <div class="header">Docker and Kubernetes: The Complete Guide</div>
-            <div class="description">
-              Build, test, and deploy Docker applications with Kubernetes while learning production-style development workflows
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/docker-and-kubernetes-the-complete-guide.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/electron_base.png" alt="Electron for Desktop Apps: The Complete Developer&#39;s Guide">
-          </div>
-          <div class="content">
-            <div class="header">Electron for Desktop Apps: The Complete Developer&#39;s Guide</div>
-            <div class="description">
-              Build compelling cross platform desktop applications using the latest in web development technologies
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/electron-for-desktop-apps-the-complete-developers-guide.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/meteor_react_base.png" alt="Meteor and React for Realtime Apps">
-          </div>
-          <div class="content">
-            <div class="header">Meteor and React for Realtime Apps</div>
-            <div class="description">
-              Master the fundamentals of Meteor and React with this tutorial as you develop secure, dynamic apps
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/meteor-and-react-for-realtime-apps.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card-flutter.jpg" alt="Dart and Flutter: The Complete Developer&#39;s Guide">
-          </div>
-          <div class="content">
-            <div class="header">Dart and Flutter: The Complete Developer&#39;s Guide</div>
-            <div class="description">
-              Everything you need to know for building mobile apps with Flutter and Dart, including RxDart and Animations!
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/dart-and-flutter-the-complete-developers-guide.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card_vue.jpg" alt="Vue JS Essentials with Vuex and Vue Router">
-          </div>
-          <div class="content">
-            <div class="header">Vue JS Essentials with Vuex and Vue Router</div>
-            <div class="description">
-              Have limited time to learn Vue, Vuex, and Vue Router? Take this course and learn Vue in 11 hours!
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/vue-js-essentials-with-vuex-and-vue-router.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="image">
-            <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card-machinelearning.jpg" alt="Machine Learning with Javascript">
-          </div>
-          <div class="content">
-            <div class="header">Machine Learning with Javascript</div>
-            <div class="description">
-              Master Machine Learning from scratch using Javascript and TensorflowJS with hands-on projects.
-            </div>
-          </div>
-          <div class="extra content">
-            <a href="/courses/machine-learning-with-javascript.html" target="_parent" class="ui right labeled large icon button btn-udemy">
-              More Information
-              <i class="long arrow right icon"></i>
-            </a>
-
-          </div>
-        </div>
-
       </div>
     </div>
 
-  </section>
-
-  <div class="vertical-space-80 mobile only"></div>
-
-
-  <section id="highlights">
-    <div class="ui container centered stackable grid">
-
-      <div class="ui center aligned five wide column">
-        <h1 class="bigger skinny">280,304</h1>
-        <h2 class="my-0">Happy Students</h2>
-        <h3 class="mt-5 skinny">from 203 countries worldwide</h3>
-      </div>
-      <div class="ui center aligned five wide column">
-        <div class="ui divider w-33 mx-a mt-0"></div>
-        <div class="star-ratings">
-          <div class="star-fill" style="width: 92.0%">
-            <i class="big filled star icon"></i>
-            <i class="big filled star icon"></i>
-            <i class="big filled star icon"></i>
-            <i class="big filled star icon"></i>
-            <i class="big filled star icon"></i>
+    <div class="row">
+      <div class="col-sm-4 mt-4">
+        <div class="card shadow-lg">
+          <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/node_with_react.jpg" alt="Node with React: Fullstack Web Development" style="width: 100%;height: auto;border-radius: inherit;">
+          <div class="card-body">
+            <h4>Node with React: Fullstack Web Development</h4>
+            <p>Build and deploy fullstack web apps with NodeJS, React, Redux, Express, and MongoDB.</p>
           </div>
-          <div class="star-unfill">
-            <i class="big filled star icon"></i>
-            <i class="big filled star icon"></i>
-            <i class="big filled star icon"></i>
-            <i class="big filled star icon"></i>
-            <i class="big filled star icon"></i>
+          <br>
+          <div class="card-footer">
+              <a class="btn btn-block bg-success text-white" href="/courses/node-with-react-fullstack-web-development.html" target="_parent">
+                <span class="mr-5 ">More Information</span>
+                <i class="fa fa-arrow-right ml-5" aria-hidden=""></i>
+              </a>
           </div>
         </div>
-
-        <div class="ui divider w-33 mx-a"></div>
-        <h2 class="my-0">Average Rating</h2>
-        <h3 class="mt-5 skinny">4.6 from 118,813 reviews</h3>
-      </div>
-      <div class="ui center aligned five wide column">
-        <h1 class="bigger skinny">21</h1>
-        <h2 class="my-0">Detailed Courses</h2>
-        <h3 class="mt-5 skinny">with 100+ hours of content</h3>
       </div>
 
-    </div>
-    <div id="tweets">
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Day 98 &lt;a href=&quot;https://twitter.com/hashtag/100DaysOfCode?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#100DaysOfCode&lt;/a&gt;-Still charging through React &amp;amp; Redux course by &lt;a href=&quot;https://twitter.com/ste_grider?ref_src=twsrc%5Etfw&quot;&gt;@ste_grider&lt;/a&gt;. I want to finish this course before day 100!&lt;/p&gt;&amp;mdash; Rick McGavin (@RickMcGavin) &lt;a href=&quot;https://twitter.com/RickMcGavin/status/855620134068768768?ref_src=twsrc%5Etfw&quot;&gt;April 22, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">Day 98 <a href="https://twitter.com/hashtag/100DaysOfCode?src=hash&amp;ref_src=twsrc%5Etfw">#100DaysOfCode</a>-Still charging through React &amp; Redux course by <a href="https://twitter.com/ste_grider?ref_src=twsrc%5Etfw">@ste_grider</a>. I want to finish this course before day 100!</p>&mdash; Rick McGavin (@RickMcGavin) <a href="https://twitter.com/RickMcGavin/status/855620134068768768?ref_src=twsrc%5Etfw">April 22, 2017</a>
-        </blockquote>
+      <div class="col-sm-4 mt-4">
+        <div class="card shadow-lg">
+          <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mongoDB_base.png" alt="The Complete Developers Guide to MongoDB" style="width: 100%;height: auto;border-radius: inherit;">
+          <div class="card-body">
+            <h4>The Complete Developers Guide to MongoDB</h4>
+            <p>Master MongoDB and Mongoose design with a test-driven approach</p>
+          </div>
+          <br>
+          <div class="card-footer">
+              <a class="btn btn-block bg-success text-white" href="/courses/the-complete-developers-guide-to-mongodb.html" target="_parent">
+                <span class="mr-5 ">More Information</span>
+                <i class="fa fa-arrow-right ml-5" aria-hidden=""></i>
+              </a>
+          </div>
+        </div>
       </div>
 
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Just completed the course &amp;quot;The Complete &lt;a href=&quot;https://twitter.com/elixirlang&quot;&gt;@elixirlang&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/elixirphoenix&quot;&gt;@elixirphoenix&lt;/a&gt;   Bootcamp&amp;quot; by &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; on &lt;a href=&quot;https://twitter.com/udemy&quot;&gt;@udemy&lt;/a&gt; &lt;a href=&quot;https://t.co/rvC9bDoNUB&quot;&gt;pic.twitter.com/rvC9bDoNUB&lt;/a&gt;&lt;/p&gt;&amp;mdash; Samuel T Thomas (@Samuel_T_Thomas) &lt;a href=&quot;https://twitter.com/Samuel_T_Thomas/status/842731157259091968&quot;&gt;March 17, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">Just completed the course &quot;The Complete <a href="https://twitter.com/elixirlang">@elixirlang</a> and <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a> Bootcamp&quot; by <a href="https://twitter.com/ste_grider">@ste_grider</a> on <a href="https://twitter.com/udemy">@udemy</a> <a href="https://t.co/rvC9bDoNUB">pic.twitter.com/rvC9bDoNUB</a></p>&mdash; Samuel T Thomas (@Samuel_T_Thomas) <a href="https://twitter.com/Samuel_T_Thomas/status/842731157259091968">March 17, 2017</a>
-        </blockquote>
+      <div class="col-sm-4 mt-4">
+        <div class="card shadow-lg">
+          <img src="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/card-ethereum.jpg" alt="Ethereum and Solidity: The Complete Developer&#39;s Guide" style="width: 100%;height: auto;border-radius: inherit;">
+          <div class="card-body">
+            <h4>Ethereum and Solidity: The Complete Developer&#39;s Guide</h4>
+            <p>Use Ethereum, Solidity, and Smart Contracts to build production-ready apps based on the blockchain.</p>
+          </div>
+          <div class="card-footer">
+              <a class="btn btn-block bg-success text-white" href="/courses/ethereum-and-solidity-the-complete-developers-guide.html" target="_parent" >
+                <span class="mr-5 ">More Information</span>
+                <i class="fa fa-arrow-right ml-5" aria-hidden=""></i>
+              </a>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;It&amp;#39;s liiiiive!!!! &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; &lt;a href=&quot;https://twitter.com/udemy&quot;&gt;@udemy&lt;/a&gt; 😍😍😍&lt;a href=&quot;https://t.co/75TiB76PNh&quot;&gt;https://t.co/75TiB76PNh&lt;/a&gt;&lt;/p&gt;&amp;mdash; Adam Hartleb (@AdamHartleb) &lt;a href=&quot;https://twitter.com/AdamHartleb/status/851542399260049408&quot;&gt;April 10, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">It&#39;s liiiiive!!!! <a href="https://twitter.com/ste_grider">@ste_grider</a> <a href="https://twitter.com/udemy">@udemy</a> 😍😍😍<a href="https://t.co/75TiB76PNh">https://t.co/75TiB76PNh</a></p>&mdash; Adam Hartleb (@AdamHartleb) <a href="https://twitter.com/AdamHartleb/status/851542399260049408">April 10, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Shoutout to &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; best react/ redux tutorial out there. He actually responds to emails &lt;a href=&quot;https://t.co/HIsGa2tzWQ&quot;&gt;https://t.co/HIsGa2tzWQ&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/reactjs?src=hash&quot;&gt;#reactjs&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/javascript?src=hash&quot;&gt;#javascript&lt;/a&gt;&lt;/p&gt;&amp;mdash; saposki (@saposki) &lt;a href=&quot;https://twitter.com/saposki/status/801202712381526016&quot;&gt;November 22, 2016&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">Shoutout to <a href="https://twitter.com/ste_grider">@ste_grider</a> best react/ redux tutorial out there. He actually responds to emails <a href="https://t.co/HIsGa2tzWQ">https://t.co/HIsGa2tzWQ</a> <a href="https://twitter.com/hashtag/reactjs?src=hash">#reactjs</a> <a href="https://twitter.com/hashtag/javascript?src=hash">#javascript</a></p>&mdash; saposki (@saposki) <a href="https://twitter.com/saposki/status/801202712381526016">November 22, 2016</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Starting the &lt;a href=&quot;https://twitter.com/udemy?ref_src=twsrc%5Etfw&quot;&gt;@udemy&lt;/a&gt; course &amp;quot;The &lt;a href=&quot;https://twitter.com/hashtag/Coding?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#Coding&lt;/a&gt; Interview Bootcamp: &lt;a href=&quot;https://twitter.com/hashtag/Algorithms?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#Algorithms&lt;/a&gt; + &lt;a href=&quot;https://twitter.com/hashtag/DataStructures?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#DataStructures&lt;/a&gt;&amp;quot; by &lt;a href=&quot;https://twitter.com/ste_grider?ref_src=twsrc%5Etfw&quot;&gt;@ste_grider&lt;/a&gt;! Gonna do an hour a day. &lt;a href=&quot;https://t.co/KARYensb8j&quot;&gt;https://t.co/KARYensb8j&lt;/a&gt;&lt;/p&gt;&amp;mdash; Caitlyn Tetmeyer (@CaitlynTetmeyer) &lt;a href=&quot;https://twitter.com/CaitlynTetmeyer/status/941772244761698304?ref_src=twsrc%5Etfw&quot;&gt;December 15, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">Starting the <a href="https://twitter.com/udemy?ref_src=twsrc%5Etfw">@udemy</a> course &quot;The <a href="https://twitter.com/hashtag/Coding?src=hash&amp;ref_src=twsrc%5Etfw">#Coding</a> Interview Bootcamp: <a href="https://twitter.com/hashtag/Algorithms?src=hash&amp;ref_src=twsrc%5Etfw">#Algorithms</a> + <a href="https://twitter.com/hashtag/DataStructures?src=hash&amp;ref_src=twsrc%5Etfw">#DataStructures</a>&quot; by <a href="https://twitter.com/ste_grider?ref_src=twsrc%5Etfw">@ste_grider</a>! Gonna do an hour a day. <a href="https://t.co/KARYensb8j">https://t.co/KARYensb8j</a></p>&mdash; Caitlyn Tetmeyer (@CaitlynTetmeyer) <a href="https://twitter.com/CaitlynTetmeyer/status/941772244761698304?ref_src=twsrc%5Etfw">December 15, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;I learned more in &lt;a href=&quot;https://twitter.com/ste_grider?ref_src=twsrc%5Etfw&quot;&gt;@ste_grider&lt;/a&gt;&amp;#39;s course &amp;quot;The Coding Interview Bootcamp: Algorithms + Data Structures&amp;quot; than in an entire university semester of algorithms 😁 &lt;a href=&quot;https://twitter.com/hashtag/100daysofcode?src=hash&amp;amp;ref_src=twsrc%5Etfw&quot;&gt;#100daysofcode&lt;/a&gt; &lt;a href=&quot;https://t.co/6oqQhstKsh&quot;&gt;https://t.co/6oqQhstKsh&lt;/a&gt;&lt;/p&gt;&amp;mdash; James Lave (@realjameslave) &lt;a href=&quot;https://twitter.com/realjameslave/status/949414446744657921?ref_src=twsrc%5Etfw&quot;&gt;January 5, 2018&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">I learned more in <a href="https://twitter.com/ste_grider?ref_src=twsrc%5Etfw">@ste_grider</a>&#39;s course &quot;The Coding Interview Bootcamp: Algorithms + Data Structures&quot; than in an entire university semester of algorithms 😁 <a href="https://twitter.com/hashtag/100daysofcode?src=hash&amp;ref_src=twsrc%5Etfw">#100daysofcode</a> <a href="https://t.co/6oqQhstKsh">https://t.co/6oqQhstKsh</a></p>&mdash; James Lave (@realjameslave) <a href="https://twitter.com/realjameslave/status/949414446744657921?ref_src=twsrc%5Etfw">January 5, 2018</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Want to learn &lt;a href=&quot;https://twitter.com/elixirlang&quot;&gt;@elixirlang&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/elixirphoenix&quot;&gt;@elixirphoenix&lt;/a&gt;? Start from this ultimate guide for beginners: &lt;a href=&quot;https://t.co/DmG8Wh0KKE&quot;&gt;https://t.co/DmG8Wh0KKE&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; &lt;a href=&quot;https://t.co/AE2ZBJGzIb&quot;&gt;pic.twitter.com/AE2ZBJGzIb&lt;/a&gt;&lt;/p&gt;&amp;mdash; Roman Zolotarev (@romanzolotarev) &lt;a href=&quot;https://twitter.com/romanzolotarev/status/799137352421609472&quot;&gt;November 17, 2016&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">Want to learn <a href="https://twitter.com/elixirlang">@elixirlang</a> and <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>? Start from this ultimate guide for beginners: <a href="https://t.co/DmG8Wh0KKE">https://t.co/DmG8Wh0KKE</a> by <a href="https://twitter.com/ste_grider">@ste_grider</a> <a href="https://t.co/AE2ZBJGzIb">pic.twitter.com/AE2ZBJGzIb</a></p>&mdash; Roman Zolotarev (@romanzolotarev) <a href="https://twitter.com/romanzolotarev/status/799137352421609472">November 17, 2016</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Node JS: Advanced Concepts ? &lt;a href=&quot;https://twitter.com/ste_grider?ref_src=twsrc%5Etfw&quot;&gt;@ste_grider&lt;/a&gt;, really.. man.. why do have to make me spend all my money? :)&lt;/p&gt;&amp;mdash; P Ξ D R O L U Z 🐿 (@narven) &lt;a href=&quot;https://twitter.com/narven/status/976502134521856002?ref_src=twsrc%5Etfw&quot;&gt;March 21, 2018&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">Node JS: Advanced Concepts ? <a href="https://twitter.com/ste_grider?ref_src=twsrc%5Etfw">@ste_grider</a>, really.. man.. why do have to make me spend all my money? :)</p>&mdash; P Ξ D R O L U Z 🐿 (@narven) <a href="https://twitter.com/narven/status/976502134521856002?ref_src=twsrc%5Etfw">March 21, 2018</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;React/Redux on the front, Go in the back would be the absolute cherry on top!&lt;/p&gt;&amp;mdash; Ernesto Rodriguez (@LarxMedia) &lt;a href=&quot;https://twitter.com/LarxMedia/status/909804710298824704?ref_src=twsrc%5Etfw&quot;&gt;September 18, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden">
-          <p lang="en" dir="ltr">React/Redux on the front, Go in the back would be the absolute cherry on top!</p>&mdash; Ernesto Rodriguez (@LarxMedia) <a href="https://twitter.com/LarxMedia/status/909804710298824704?ref_src=twsrc%5Etfw">September 18, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; Your react native course is excellent.&lt;/p&gt;&amp;mdash; Derek Beattie (@DerekBeattie) &lt;a href=&quot;https://twitter.com/DerekBeattie/status/858372408549548033&quot;&gt;April 29, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr"><a href="https://twitter.com/ste_grider">@ste_grider</a> Your react native course is excellent.</p>&mdash; Derek Beattie (@DerekBeattie) <a href="https://twitter.com/DerekBeattie/status/858372408549548033">April 29, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/KeilCarpenter&quot;&gt;@KeilCarpenter&lt;/a&gt; &lt;a href=&quot;https://twitter.com/vuejstweet&quot;&gt;@vuejstweet&lt;/a&gt; &lt;a href=&quot;https://twitter.com/udemy&quot;&gt;@udemy&lt;/a&gt; I&amp;#39;m halfway done w/ &amp;quot;Modern React with Redux&amp;quot; by &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt;. Great! Bought &amp;quot;Advanced&amp;quot; today...up next.&lt;/p&gt;&amp;mdash; Vincent Jenks (@VincentJenks) &lt;a href=&quot;https://twitter.com/VincentJenks/status/825530472625270784&quot;&gt;January 29, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden">
-          <p lang="en" dir="ltr"><a href="https://twitter.com/KeilCarpenter">@KeilCarpenter</a> <a href="https://twitter.com/vuejstweet">@vuejstweet</a> <a href="https://twitter.com/udemy">@udemy</a> I&#39;m halfway done w/ &quot;Modern React with Redux&quot; by <a href="https://twitter.com/ste_grider">@ste_grider</a>. Great! Bought &quot;Advanced&quot; today...up next.</p>&mdash; Vincent Jenks (@VincentJenks) <a href="https://twitter.com/VincentJenks/status/825530472625270784">January 29, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;I completed &amp;quot;Modern React with Redux&amp;quot; class! Very good explanations and examples. &lt;a href=&quot;https://t.co/3BRogvSTjR&quot;&gt;https://t.co/3BRogvSTjR&lt;/a&gt; &lt;a href=&quot;https://twitter.com/udemy&quot;&gt;@udemy&lt;/a&gt; &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/womenwhocode?src=hash&quot;&gt;#womenwhocode&lt;/a&gt;&lt;/p&gt;&amp;mdash; Yenly (@mindfullycrafts) &lt;a href=&quot;https://twitter.com/mindfullycrafts/status/805947284382838784&quot;&gt;December 6, 2016&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">I completed &quot;Modern React with Redux&quot; class! Very good explanations and examples. <a href="https://t.co/3BRogvSTjR">https://t.co/3BRogvSTjR</a> <a href="https://twitter.com/udemy">@udemy</a> <a href="https://twitter.com/ste_grider">@ste_grider</a> <a href="https://twitter.com/hashtag/womenwhocode?src=hash">#womenwhocode</a></p>&mdash; Yenly (@mindfullycrafts) <a href="https://twitter.com/mindfullycrafts/status/805947284382838784">December 6, 2016</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;I&amp;#39;ve been thoroughly enjoying &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt;&amp;#39;s courses on Udemy. If you&amp;#39;re looking to learn new tools, check them out &lt;a href=&quot;https://t.co/31cXDXv6bX&quot;&gt;https://t.co/31cXDXv6bX&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jon Nale (@jonnale) &lt;a href=&quot;https://twitter.com/jonnale/status/826954178803146753&quot;&gt;February 2, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">I&#39;ve been thoroughly enjoying <a href="https://twitter.com/ste_grider">@ste_grider</a>&#39;s courses on Udemy. If you&#39;re looking to learn new tools, check them out <a href="https://t.co/31cXDXv6bX">https://t.co/31cXDXv6bX</a></p>&mdash; Jon Nale (@jonnale) <a href="https://twitter.com/jonnale/status/826954178803146753">February 2, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;testing was never as clear as clear – thank you &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt;&lt;/p&gt;&amp;mdash; Bud Aminof (@bud_aminof) &lt;a href=&quot;https://twitter.com/bud_aminof/status/854755075385851904&quot;&gt;April 19, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">testing was never as clear as clear – thank you <a href="https://twitter.com/ste_grider">@ste_grider</a></p>&mdash; Bud Aminof (@bud_aminof) <a href="https://twitter.com/bud_aminof/status/854755075385851904">April 19, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/ste_grider?ref_src=twsrc%5Etfw&quot;&gt;@ste_grider&lt;/a&gt; hi Stephen, just bought the advanced node course. Course content looks amazing, kudos to you for the hard work.&lt;/p&gt;&amp;mdash; Raja Raghav (@raja__raghav) &lt;a href=&quot;https://twitter.com/raja__raghav/status/974617956780044289?ref_src=twsrc%5Etfw&quot;&gt;March 16, 2018&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr"><a href="https://twitter.com/ste_grider?ref_src=twsrc%5Etfw">@ste_grider</a> hi Stephen, just bought the advanced node course. Course content looks amazing, kudos to you for the hard work.</p>&mdash; Raja Raghav (@raja__raghav) <a href="https://twitter.com/raja__raghav/status/974617956780044289?ref_src=twsrc%5Etfw">March 16, 2018</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Bought It even before It was uploaded!&lt;/p&gt;&amp;mdash; Jesús Mendoza (@JesusReveron) &lt;a href=&quot;https://twitter.com/JesusReveron/status/920694161413672960?ref_src=twsrc%5Etfw&quot;&gt;October 18, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden">
-          <p lang="en" dir="ltr">Bought It even before It was uploaded!</p>&mdash; Jesús Mendoza (@JesusReveron) <a href="https://twitter.com/JesusReveron/status/920694161413672960?ref_src=twsrc%5Etfw">October 18, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; Your Udemy material is so good that I might just setup a Zapier zap that auto purchases your new material on release.⚡️📣&lt;/p&gt;&amp;mdash; Lev E. (@levsthings) &lt;a href=&quot;https://twitter.com/levsthings/status/841301505051365376&quot;&gt;March 13, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr"><a href="https://twitter.com/ste_grider">@ste_grider</a> Your Udemy material is so good that I might just setup a Zapier zap that auto purchases your new material on release.⚡️📣</p>&mdash; Lev E. (@levsthings) <a href="https://twitter.com/levsthings/status/841301505051365376">March 13, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Day 98 &lt;a href=&quot;https://twitter.com/hashtag/100DaysOfCode?src=hash&quot;&gt;#100DaysOfCode&lt;/a&gt;-Still charging through React &amp;amp; Redux course by &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt;. I want to finish this course before day 100!&lt;/p&gt;&amp;mdash; Rick McGavin (@RickMcGavin) &lt;a href=&quot;https://twitter.com/RickMcGavin/status/855620134068768768&quot;&gt;April 22, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">Day 98 <a href="https://twitter.com/hashtag/100DaysOfCode?src=hash">#100DaysOfCode</a>-Still charging through React &amp; Redux course by <a href="https://twitter.com/ste_grider">@ste_grider</a>. I want to finish this course before day 100!</p>&mdash; Rick McGavin (@RickMcGavin) <a href="https://twitter.com/RickMcGavin/status/855620134068768768">April 22, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;I&amp;#39;ll definitely buy this. Thank you!&lt;/p&gt;&amp;mdash; Patricio ✌️ (@patricklouip) &lt;a href=&quot;https://twitter.com/patricklouip/status/920736812535914497?ref_src=twsrc%5Etfw&quot;&gt;October 18, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden">
-          <p lang="en" dir="ltr">I&#39;ll definitely buy this. Thank you!</p>&mdash; Patricio ✌️ (@patricklouip) <a href="https://twitter.com/patricklouip/status/920736812535914497?ref_src=twsrc%5Etfw">October 18, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Hands down the &amp;quot;Modern React with Redux&amp;quot; Udemy Course by &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; is top notch! 🙌&lt;/p&gt;&amp;mdash; anthony delgado (@d3vHero) &lt;a href=&quot;https://twitter.com/d3vHero/status/857769777888206852&quot;&gt;April 28, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">Hands down the &quot;Modern React with Redux&quot; Udemy Course by <a href="https://twitter.com/ste_grider">@ste_grider</a> is top notch! 🙌</p>&mdash; anthony delgado (@d3vHero) <a href="https://twitter.com/d3vHero/status/857769777888206852">April 28, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;a couple glasses of wine and a &lt;a href=&quot;https://twitter.com/hashtag/MongoDB?src=hash&quot;&gt;#MongoDB&lt;/a&gt; course from &lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; is making this a lovely &amp;amp; productive evening. &lt;a href=&quot;https://twitter.com/hashtag/javascript?src=hash&quot;&gt;#javascript&lt;/a&gt;&lt;/p&gt;&amp;mdash; Mark Foster (@markadamfoster) &lt;a href=&quot;https://twitter.com/markadamfoster/status/823735795571798017&quot;&gt;January 24, 2017&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr">a couple glasses of wine and a <a href="https://twitter.com/hashtag/MongoDB?src=hash">#MongoDB</a> course from <a href="https://twitter.com/ste_grider">@ste_grider</a> is making this a lovely &amp; productive evening. <a href="https://twitter.com/hashtag/javascript?src=hash">#javascript</a></p>&mdash; Mark Foster (@markadamfoster) <a href="https://twitter.com/markadamfoster/status/823735795571798017">January 24, 2017</a>
-        </blockquote>
-      </div>
-      <div class="tweet" data-tweet="&lt;blockquote class=&quot;twitter-tweet&quot; data-cards=&quot;hidden&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/ste_grider&quot;&gt;@ste_grider&lt;/a&gt; we love your React Redux tutorials, you are awesome!&lt;/p&gt;&amp;mdash; Bud Aminof (@bud_aminof) &lt;a href=&quot;https://twitter.com/bud_aminof/status/808800094854279168&quot;&gt;December 13, 2016&lt;/a&gt;&lt;/blockquote&gt;">
-        <blockquote class="twitter-tweet" data-cards="hidden">
-          <p lang="en" dir="ltr"><a href="https://twitter.com/ste_grider">@ste_grider</a> we love your React Redux tutorials, you are awesome!</p>&mdash; Bud Aminof (@bud_aminof) <a href="https://twitter.com/bud_aminof/status/808800094854279168">December 13, 2016</a>
-        </blockquote>
+  </div>
+<br><br>
+  <!-- footer -->
+  <nav class="navbar navbar-expand-lg navbar-light p-4">
+    <div class="container mt-1">
+      <p class="text-white mt-1">Rotati@2019 devbootstrap</p>
+      <div class="collapse navbar-collapse" id=""></div>
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true">Video</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div id="slideshow-controls">
-      <button id="slide-prev" type="button" class="ui icon big button"><i class="big chevron left icon"></i></button>
-      <button id="slide-next" type="button" class="ui icon big button"><i class="big chevron right icon"></i></button>
-    </div>
-  </section>
-  <div class="vertical-space-80"></div>
-  <section id="footer">
-    <div class="ui container borderless menu mobile hidden">
-      <div class="item">
-        ©2017 RallyCoding. All Rights Reserved
-      </div>
-      <div class="right menu">
-        <a href="/courses" class="item nav-courses active">Courses</a>
-        <a href="/blog" class="item nav-blog ">Blog</a>
-        <a href="/videos" class="item nav-videos ">Videos</a>
-        <a href="https://support.udemy.com/hc/en-us/articles/229604248-Refund-a-Course" target="_blank" class="item">Refund Policy</a>
-      </div>
-    </div>
-    <div class="ui container borderless menu mobile only">
-      <a href="/courses" class="item nav-courses active">Courses</a>
-      <a href="/blog" class="item nav-blog ">Blog</a>
-      <a href="/videos" class="item nav-videos ">Videos</a>
-      <a href="https://support.udemy.com/hc/en-us/articles/229604248-Refund-a-Course" target="_blank" class="item">Refund Policy</a>
-      <div class="item">
-        ©2017 RallyCoding. All Rights Reserved
-      </div>
-    </div>
-    <div id="background-bottom-right"></div>
-  </section>
-
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-<script src="../assets/js/jquery.min.c9f5aeeca3ad.js"></script>
-<script src="../assets/js/slick.min.b53bdfc29e18.js"></script>
-<script src="../assets/js/directory.ccac5fb256f2.js"></script>
-
 </html>

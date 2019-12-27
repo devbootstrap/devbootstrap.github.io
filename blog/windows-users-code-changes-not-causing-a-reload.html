@@ -1,109 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Some Windows users have reported that file changes are not automatically causing Webpack to rebuild.  Here is a way to fix that.">
-    <meta property="og:url" content="https://www.rallycoding.com/blog/windows-users-code-changes-not-causing-a-reload/" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Windows Users: Code Changes not Causing a Reload?" />
-    <meta property="og:description" content="Some Windows users have reported that file changes are not automatically causing Webpack to rebuild.  Here is a way to fix that." />
-    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/rallycodingsite/site/mockup.png" />
-    <meta property="og:image:width" content="1792" />
-    <meta property="og:image:height" content="963" />
-
-    <title>RallyCoding: Windows Users: Code Changes not Causing a Reload?</title>
-    <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/prism.a71935aa0da6.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/post.4bcdee4fe9d4.css">
+<title>Jekyll Site</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
 
 </head>
-<body>
-  <section id="hero">
-    <div class="ui container">
-      <div id="header" class="ui borderless menu">
-        <div class="header item">
-          <h4 id="logo" onclick="document.location.href='/'">
-            RallyCoding
-          </h4>
-        </div>
-        <div id="nav" class="right menu">
-          <a class="item nav-courses " href="/courses">Courses</a>
-          <a class="item nav-blog " href="/blog">Blog</a>
-          <a class="item nav-videos " href="/videos">Videos</a>
-        </div>
+<body class="">
+  <nav class="navbar navbar-expand-lg navbar-light p-5">
+    <div class="container">
+      <a class="navbar-brand text-white" href="/"><h3>Devbootstrap</h3></a>
+      <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses"><h6>Courses</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog"><h6>Blog</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true"><h6>Video</h6></a>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
-  <section id="post" class="ui container">
-    <h1>Windows Users: Code Changes not Causing a Reload?</h1>
-    <p>A student asked:</p>
-    <blockquote>
-      <p><em>Just starting your course, and found a small concern that you may want to address.
-          When using Windows 10 console, and npm start, it is sometimes necessary to stop it with Ctrl-C + Y, and then restart it for code changes to &quot;take&quot;.</p>
+  </nav>
 
-      <p>This works, but is an extra step not found in your course.
-        Is there a workaround for Windows 10? Or did I miss a step?</em></p>
-    </blockquote>
-    <p>A good workaround for this issue is to make Webpack check for file changes at a given interval. In the <code>webpack.config.js</code> file, look for the <code>devServer</code> property and add this code inside it:</p>
-    <pre>
-      <code class="language-javascript">
-        watchOptions: {
-          aggregateTimeout: 300,
-          poll: 1000
-        }
-        // Afterwards, the devServer property
-        // might look like this:
-        devServer: {
-          historyApiFallback: true,
-          contentBase: &#39;./&#39;,
+  <div class="container mt-4">
+      <h1>Windows Users: Code Changes not Causing a Reload?</h1>
+      <p>A student asked:</p>
+      <blockquote>
+        <p><em>Just starting your course, and found a small concern that you may want to address.
+            When using Windows 10 console, and npm start, it is sometimes necessary to stop it with Ctrl-C + Y, and then restart it for code changes to &quot;take&quot;.</p>
+
+        <p>This works, but is an extra step not found in your course.
+          Is there a workaround for Windows 10? Or did I miss a step?</em></p>
+      </blockquote>
+      <p>A good workaround for this issue is to make Webpack check for file changes at a given interval. In the <code>webpack.config.js</code> file, look for the <code>devServer</code> property and add this code inside it:</p>
+      <pre class="bg-secondary">
+        <code >
           watchOptions: {
             aggregateTimeout: 300,
             poll: 1000
           }
-        }
-      </code>
-    </pre>
-    <p>The properties inside <code>watchOptions</code> tell Webpack when to rebuild and how often to look for changes:</p>
-    <ul>
-      <li><code>aggregateTimeout</code> is the number of milliseconds that Webpack will wait before rebuilding the changed files <a href="https://webpack.js.org/configuration/watch/#watchoptions-aggregatetimeout" target="_blank">(view docs)</a>. </li>
+          // Afterwards, the devServer property
+          // might look like this:
+          devServer: {
+            historyApiFallback: true,
+            contentBase: &#39;./&#39;,
+            watchOptions: {
+              aggregateTimeout: 300,
+              poll: 1000
+            }
+          }
+        </code>
+      </pre>
+      <p>The properties inside <code>watchOptions</code> tell Webpack when to rebuild and how often to look for changes:</p>
+      <ul>
+        <li><code>aggregateTimeout</code> is the number of milliseconds that Webpack will wait before rebuilding the changed files <a href="https://webpack.js.org/configuration/watch/#watchoptions-aggregatetimeout" target="_blank">(view docs)</a>. </li>
 
-      <li><code>poll</code> is the number of milliseconds, or interval, between each check for file changes <a href="https://webpack.js.org/configuration/watch/#watchoptions-poll" target="_blank">(view docs)</a>.</li>
-    </ul>
-    <div id="post-controls">
-      <a href="/blog/troubleshooting-react-native-startup/" class="ui labeled left floated icon button">
-        <i class="left arrow icon"></i>
-        Previous Post
-      </a>
-      <a href="/blog/react-redux-and-a-pile-of-state.html" class="ui right labeled right floated icon button">
-        <i class="right arrow icon"></i>
-        Next Post
-      </a>
+        <li><code>poll</code> is the number of milliseconds, or interval, between each check for file changes <a href="https://webpack.js.org/configuration/watch/#watchoptions-poll" target="_blank">(view docs)</a>.</li>
+      </ul>
+      <div id="post-controls">
+        <a class="btn bg-primary" href="/blog/troubleshooting-react-native-startup/" class="ui labeled left floated icon button">
+          Previous Post
+        </a>
+        <a class="btn bg-primary" href="/blog/react-redux-and-a-pile-of-state.html" class="ui right labeled right floated icon button">
+          Next Post
+        </a>
+      </div>
+  </div>
+  <br><br>
+  <!-- footer -->
+  <nav class="navbar navbar-expand-lg navbar-light p-4">
+    <div class="container mt-1">
+      <p class="text-white mt-1">Rotati@2019 devbootstrap</p>
+      <div class="collapse navbar-collapse" id=""></div>
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item ">
+            <a class="nav-link text-white text-white" href="/courses">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white  " href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-white" href="/videos" tabindex="-1" aria-disabled="true">Video</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="vertical-space-80"></div>
-  </section>
-
-  <div id="disqus_thread" class="ui container"></div>
-  <script src="../assets/js/prism.44ed291397f3.js"></script>
-  <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    var disqus_config = function() {
-      this.page.url = 'https://www.rallycoding.com/blog/windows-users-code-changes-not-causing-a-reload.html';
-      this.page.identifier = 'rallycoding-post-11';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://rallycoding.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
 </html>
