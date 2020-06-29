@@ -19,13 +19,11 @@
 # in the templates via {{ site.myvariable }}.
 
 title: DevBootstrap Full Stack Blockchain Developer Tutorials
-email: your-email@example.com
+email: info@devbootstrap.com
 description: >- # this means to ignore newlines until "baseurl:"
   Full Stack Blockchain Developer Tutorials
 url: devbootstrap.github.io
-baseurl: /jekyll-site
-# twitter_username: jekyllrb
-# github_username:  jekyll
+# baseurl: /
 
 # Build settings
 # theme: minima
