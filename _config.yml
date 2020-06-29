@@ -22,8 +22,9 @@ title: DevBootstrap Full Stack Blockchain Developer Tutorials
 email: info@devbootstrap.com
 description: >- # this means to ignore newlines until "baseurl:"
   Full Stack Blockchain Developer Tutorials
-url: devbootstrap.github.io
+url: http://devbootstrap.com
 baseurl: /
+root: /
 
 # Build settings
 # theme: minima
